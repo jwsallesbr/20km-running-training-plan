@@ -1,244 +1,67 @@
+
+/* styles_custom.css - Tema escuro esportivo */
 body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    font-family: 'Segoe UI', Roboto, sans-serif;
+    background-color: #121212;
+    color: #E0E0E0;
     line-height: 1.6;
-    color: #333;
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 20px;
-    background-color: #f9f9f9;
 }
 
-h1 {
-    color: #0066cc;
+header {
+    background: linear-gradient(90deg, #1e1e1e, #2c2c2c);
+    padding: 2rem;
     text-align: center;
-    font-size: 2.5em;
-    margin-bottom: 30px;
-    text-transform: uppercase;
-    border-bottom: 3px solid #0066cc;
-    padding-bottom: 10px;
+    border-bottom: 3px solid #ff6b00;
 }
 
-h2 {
-    color: #0066cc;
-    font-size: 1.8em;
-    margin-top: 30px;
-    margin-bottom: 20px;
-    border-left: 5px solid #0066cc;
-    padding-left: 15px;
-}
-
-h3 {
-    color: #0066cc;
-    font-size: 1.5em;
-    margin-top: 25px;
-    margin-bottom: 15px;
-}
-
-.info-container {
-    display: flex;
-    justify-content: space-around;
-    flex-wrap: wrap;
-    margin-bottom: 30px;
-    background-color: #e6f2ff;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-}
-
-.info-box {
-    flex: 1;
-    min-width: 200px;
-    margin: 10px;
-    padding: 15px;
-    background-color: white;
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
-    text-align: center;
-}
-
-.info-box h3 {
-    color: #0066cc;
-    margin-top: 0;
-    font-size: 1.2em;
-    border-bottom: 2px solid #0066cc;
-    padding-bottom: 5px;
-    margin-bottom: 10px;
-}
-
-.overview-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin: 20px 0;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-}
-
-.overview-table th {
-    background-color: #0066cc;
-    color: white;
-    padding: 12px;
-    text-align: left;
-}
-
-.overview-table td {
-    padding: 12px;
-    border-bottom: 1px solid #ddd;
-}
-
-.overview-table tr:nth-child(even) {
-    background-color: #f2f2f2;
-}
-
-.overview-table tr:hover {
-    background-color: #e6f2ff;
-}
-
-.week-container {
-    margin-bottom: 40px;
-    background-color: white;
-    border-radius: 10px;
-    padding: 20px;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-}
-
-.week-header {
-    background-color: #0066cc;
-    color: white;
-    padding: 10px 20px;
-    border-radius: 8px 8px 0 0;
-    margin: -20px -20px 20px -20px;
-}
-
-.week-header h3 {
-    color: white;
+header h1 {
+    font-size: 2.5rem;
+    color: #ff6b00;
     margin: 0;
 }
 
-.training-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-bottom: 20px;
+.container {
+    max-width: 900px;
+    margin: 2rem auto;
+    padding: 1rem;
+    background-color: #1e1e1e;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(255, 107, 0, 0.2);
 }
 
-.training-table th {
-    background-color: #4d94ff;
-    color: white;
-    padding: 10px;
-    text-align: left;
+h2 {
+    color: #ffa733;
+    border-left: 4px solid #ff6b00;
+    padding-left: 10px;
 }
 
-.training-table td {
-    padding: 12px;
-    border-bottom: 1px solid #ddd;
-    vertical-align: top;
+ul, ol {
+    padding-left: 1.5rem;
 }
 
-.training-table tr:hover {
-    background-color: #f5f5f5;
+li::marker {
+    color: #ff6b00;
 }
 
-.day-column {
-    width: 15%;
-    font-weight: bold;
-    color: #0066cc;
-}
-
-.type-column {
-    width: 25%;
-    font-weight: bold;
-}
-
-.description-column {
-    width: 60%;
-}
-
-.tips-container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    margin-top: 30px;
-}
-
-.tip-box {
-    flex: 1;
-    min-width: 300px;
-    margin: 10px;
-    padding: 20px;
-    background-color: white;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-}
-
-.tip-box h3 {
-    color: #0066cc;
-    border-bottom: 2px solid #0066cc;
-    padding-bottom: 10px;
-    margin-top: 0;
-}
-
-.tip-list {
-    list-style-type: none;
-    padding-left: 0;
-}
-
-.tip-list li {
-    padding: 8px 0;
-    border-bottom: 1px solid #eee;
-}
-
-.tip-list li:before {
-    content: "✓";
-    color: #0066cc;
+img.icon {
+    width: 40px;
+    height: auto;
+    vertical-align: middle;
     margin-right: 10px;
 }
 
-.footer {
+footer {
     text-align: center;
-    margin-top: 40px;
-    padding-top: 20px;
-    border-top: 1px solid #ddd;
-    color: #666;
-    font-size: 0.9em;
+    color: #888;
+    margin-top: 4rem;
+    padding-bottom: 1rem;
 }
 
-@media print {
-    body {
-        background-color: white;
-        padding: 0;
-    }
-    
-    .week-container, .info-container, .tip-box {
-        box-shadow: none;
-        border: 1px solid #ddd;
-    }
-    
-    .week-container {
-        page-break-inside: avoid;
-    }
-}
-
-.intensity-low {
-    background-color: #e6ffe6;
-}
-
-.intensity-medium {
-    background-color: #ffffcc;
-}
-
-.intensity-high {
-    background-color: #ffe6e6;
-}
-
-.race-day {
-    background-color: #e6f2ff;
-    font-weight: bold;
-}
-
-.workout-step {
-    margin-bottom: 5px;
-}
-
-.workout-step:before {
-    content: "•";
-    color: #0066cc;
-    margin-right: 8px;
+.tip {
+    background-color: #2a2a2a;
+    border-left: 5px solid #ffa733;
+    padding: 1rem;
+    margin: 1rem 0;
+    border-radius: 5px;
 }
