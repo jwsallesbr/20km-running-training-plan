@@ -1,0 +1,235 @@
+.hero-banner {
+    background: linear-gradient(135deg, #0066cc, #00ccff);
+    color: white;
+    text-align: center;
+    padding: 40px 0;
+    border-radius: 10px;
+    margin-bottom: 30px;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+
+.hero-banner::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('assets/images/runner-silhouette.svg');
+    background-repeat: no-repeat;
+    background-position: right bottom;
+    background-size: contain;
+    opacity: 0.2;
+    z-index: 0;
+}
+
+.hero-banner h1 {
+    font-size: 3em;
+    margin-bottom: 10px;
+    position: relative;
+    z-index: 1;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+}
+
+.hero-banner p {
+    font-size: 1.2em;
+    max-width: 800px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+}
+
+.icon-container {
+    display: flex;
+    justify-content: center;
+    margin: 20px 0;
+}
+
+.icon-box {
+    text-align: center;
+    padding: 15px;
+    margin: 0 10px;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 3px 6px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease;
+    width: 120px;
+}
+
+.icon-box:hover {
+    transform: translateY(-5px);
+}
+
+.icon-box img {
+    width: 60px;
+    height: 60px;
+    margin-bottom: 10px;
+}
+
+.icon-box h4 {
+    margin: 0;
+    color: #0066cc;
+    font-size: 0.9em;
+}
+
+.week-container {
+    position: relative;
+}
+
+.week-container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('assets/images/track-pattern.svg');
+    background-repeat: no-repeat;
+    background-position: right top;
+    background-size: 150px;
+    opacity: 0.05;
+    z-index: -1;
+}
+
+.training-table tr:hover {
+    background-color: #f0f8ff;
+    transition: background-color 0.3s ease;
+}
+
+.training-table td.description-column .workout-step {
+    position: relative;
+    padding-left: 20px;
+}
+
+.training-table td.description-column .workout-step::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 12px;
+    height: 12px;
+    background-image: url('assets/images/checkmark.svg');
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
+.race-day {
+    position: relative;
+    overflow: hidden;
+}
+
+.race-day::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 40px;
+    height: 40px;
+    background-image: url('assets/images/medal.svg');
+    background-repeat: no-repeat;
+    background-size: contain;
+    opacity: 0.7;
+}
+
+.tip-box {
+    position: relative;
+    overflow: hidden;
+}
+
+.tip-box::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 80px;
+    height: 80px;
+    background-image: url('assets/images/tip-icon.svg');
+    background-repeat: no-repeat;
+    background-size: contain;
+    opacity: 0.1;
+}
+
+.progress-indicator {
+    height: 5px;
+    background: linear-gradient(to right, #0066cc, #00ccff);
+    margin: 30px 0;
+    border-radius: 5px;
+    position: relative;
+}
+
+.progress-indicator::before {
+    content: 'Início';
+    position: absolute;
+    left: 0;
+    top: -25px;
+    font-size: 0.8em;
+    color: #0066cc;
+}
+
+.progress-indicator::after {
+    content: 'Meta: 20km';
+    position: absolute;
+    right: 0;
+    top: -25px;
+    font-size: 0.8em;
+    color: #0066cc;
+}
+
+.motivational-quote {
+    font-style: italic;
+    text-align: center;
+    margin: 30px 0;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-left: 5px solid #0066cc;
+    font-size: 1.2em;
+    color: #555;
+}
+
+@media print {
+    .hero-banner, .icon-container, .progress-indicator, .motivational-quote {
+        page-break-inside: avoid;
+    }
+}
+
+.intensity-indicator {
+    display: inline-block;
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    margin-right: 5px;
+    vertical-align: middle;
+}
+
+.intensity-low .intensity-indicator {
+    background-color: #90ee90;
+}
+
+.intensity-medium .intensity-indicator {
+    background-color: #ffff99;
+}
+
+.intensity-high .intensity-indicator {
+    background-color: #ff9999;
+}
+
+.footer {
+    position: relative;
+}
+
+.footer::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100px;
+    height: 50px;
+    background-image: url('assets/images/finish-line.svg');
+    background-repeat: no-repeat;
+    background-size: contain;
+    opacity: 0.2;
+}
