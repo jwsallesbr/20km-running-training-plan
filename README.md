@@ -2,7 +2,11 @@
 
 Um aplicativo web interativo para ajudar corredores a se prepararem para uma corrida de 20KM. O projeto oferece um plano de treinamento personalizado, acompanhamento de progresso e recursos educacionais para melhorar a performance na corrida.
 
-🌐 [Acesse o site](https://20km-running-training-plan.netlify.app/)
+## 🌐 Acesse o Plano de Treino Online
+
+[**👉 Clique aqui para acessar o plano de treino completo**](https://20km-running-training-plan.netlify.app/)
+
+Comece sua jornada para os 20KM agora mesmo!
 
 ## ✨ Características
 
