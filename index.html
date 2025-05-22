@@ -34,6 +34,22 @@
             --card-border: #dee2e6; /* Borda do card clara */
         }
 
+        body.light-mode .training-card {
+            /* background-color: var(--card-bg); */ /* Removido para manter a cor original */
+            border: 1px solid var(--card-border);
+        }
+
+        body.light-mode .training-card p,
+        body.light-mode .training-card li {
+            color: #f5f5f5; /* Usa cor de texto clara (do modo escuro) */
+        }
+
+        body.light-mode .footer-social a {
+            color: var(--text-color); /* Ícones escuros */
+            background-color: var(--darker-color); /* Fundo claro */
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2); /* Sombra um pouco mais destacada */
+        }
+
         * {
             margin: 0;
             padding: 0;
@@ -215,7 +231,7 @@
 
         .progress-milestones {
             position: absolute;
-            top: -15px;
+            top: -10px;
             left: 0;
             width: 100%;
             display: flex;
@@ -249,6 +265,37 @@
             justify-content: space-between;
             color: var(--text-light);
             font-size: 0.9rem;
+        }
+
+        /* Progress Container Light Mode */
+        body.light-mode .progress-container {
+            background-color: var(--card-bg);
+            border: 1px solid var(--card-border);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        body.light-mode .progress-container h2 {
+             color: var(--text-color);
+        }
+
+        body.light-mode .progress-track {
+            background-color: var(--card-border); /* Trilha da barra clara */
+        }
+
+        body.light-mode .milestone {
+            color: var(--text-color); /* Define a cor do texto dos marcos para escuro no modo claro */
+            background-color: var(--darker-color); /* Fundo claro para os marcos */
+            border: 2px solid var(--card-border);
+        }
+
+        body.light-mode .milestone.active {
+             background-color: var(--primary-color);
+             color: white;
+             border-color: var(--primary-color); /* Borda ativa baseada na cor primária */
+        }
+
+        body.light-mode .progress-labels span {
+             color: var(--text-color); /* Rótulos escuros */
         }
 
         /* Motivational Section */
@@ -314,7 +361,7 @@
         }
 
         .week-header {
-            background: linear-gradient(to right, var(--darker-color), #1a1a1a);
+            background: linear-gradient(to right, #050505, #101010); /* Gradiente mais escuro para o modo escuro */
             color: white;
             padding: 20px 30px;
             display: flex;
@@ -323,8 +370,13 @@
             border-bottom: 1px solid var(--card-border);
         }
 
+        body.light-mode .week-header {
+            background: linear-gradient(to right, #050505, #101010); /* Mesmo gradiente escuro do modo dark */
+            border-bottom: none; /* Mantém sem a borda inferior escura no modo claro */
+        }
+
         .week-header h2 {
-            color: white;
+            color: #FFFFFF !important; /* Define a cor do título para branco puro e importante para garantir visibilidade */
             margin: 0;
         }
 
@@ -338,7 +390,7 @@
             align-items: center;
             gap: 5px;
             font-size: 0.9rem;
-            color: var(--text-light);
+            color: #FFFFFF !important; /* Define a cor das estatísticas para branco puro e importante para garantir visibilidade */
         }
 
         .week-stats i {
@@ -814,6 +866,53 @@
 
         .theme-toggle:hover {
             transform: scale(1.1);
+        }
+
+        body.light-mode .week-header h2,
+        body.light-mode .footer-logo span,
+        body.light-mode .footer-content p {
+             color: var(--text-color); /* Títulos e texto do rodapé escuros */
+        }
+
+        body.light-mode .week-header .week-stats span {
+            color: var(--text-color); /* Estatísticas da semana (texto) escuros */
+        }
+
+        body.light-mode .week-stats i {
+            color: var(--secondary-color); /* Ícones das estatísticas da semana verdes no modo claro */
+        }
+
+        body.light-mode .week-header h2,
+        body.light-mode .week-header .week-stats span {
+            color: #f5f5f5; /* Usa cor de texto clara para visibilidade contra o fundo escuro */
+        }
+
+        body.light-mode .training-card .training-day,
+        body.light-mode .training-card .training-type span,
+        body.light-mode .training-card .training-description p {
+             color: #f5f5f5; /* Usa cor de texto clara (do modo escuro) */
+        }
+
+        body.light-mode .training-card .detail-item i,
+        body.light-mode .training-card .detail-item span {
+             color: #f5f5f5; /* Usa cor de texto clara para detalhes no modo claro */
+        }
+
+        body.light-mode .footer-social a {
+            color: var(--text-color); /* Ícones escuros */
+            background-color: var(--darker-color); /* Fundo claro */
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2); /* Sombra um pouco mais destacada */
+        }
+
+        /* Progress Milestones Light Mode */
+        body.light-mode .milestone {
+            color: var(--text-color); /* Define a cor do texto dos marcos para escuro no modo claro */
+        }
+
+        body.light-mode .week-header h2,
+        body.light-mode .footer-logo span,
+        body.light-mode .footer-content p {
+             color: var(--text-color); /* Títulos e texto do rodapé escuros */
         }
     </style>
 </head>
@@ -1405,7 +1504,7 @@
                 <i class="fas fa-running"></i>
                 <span>20KM CHALLENGE</span>
             </div>
-            <p>Plano de treino personalizado para corrida de 20km - Data da prova: 6 de julho de 2025</p>
+            <p>Plano de treino personalizado para corrida de 20km</p>
             <div class="footer-social">
                 <a href="https://www.linkedin.com/in/vagner-sales-br/"><i class="fab fa-linkedin-in"></i></a>
                 <a href="https://www.facebook.com/wagnersalles15"><i class="fab fa-facebook-f"></i></a>
