@@ -1,34 +1,40 @@
 // Contador regressivo para a prova
-function updateCountdown() {
-    const raceDate = new Date('2025-07-06T00:00:00');
-    const now = new Date();
-    const difference = raceDate - now;
-    
-    const days = Math.floor(difference / (1000 * 60 * 60 * 24));
-    const hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-    const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
-    const seconds = Math.floor((difference % (1000 * 60)) / 1000);
-    
-    document.getElementById('days').textContent = days.toString().padStart(2, '0');
-    document.getElementById('hours').textContent = hours.toString().padStart(2, '0');
-    document.getElementById('minutes').textContent = minutes.toString().padStart(2, '0');
-    document.getElementById('seconds').textContent = seconds.toString().padStart(2, '0');
-}
-
+// ... existing code ...
 // Ativar marcos de progresso
 function initializeMilestones() {
-    document.querySelectorAll('.milestone').forEach(item => {
+    const progressBar = document.querySelector('.progress-bar');
+    const milestones = document.querySelectorAll('.milestone');
+    const totalWeeks = milestones.length;
+
+    milestones.forEach(item => {
         item.addEventListener('click', event => {
-            document.querySelectorAll('.milestone').forEach(m => m.classList.remove('active'));
+            const weekNumber = parseInt(event.currentTarget.dataset.week);
+            
+            // Update active milestone
+            milestones.forEach(m => m.classList.remove('active'));
             event.currentTarget.classList.add('active');
-            // Salvar preferência do usuário
-            localStorage.setItem('activeWeek', event.currentTarget.dataset.week);
+            
+            // Calculate and update progress bar
+            const progress = (weekNumber / totalWeeks) * 100;
+            progressBar.style.width = `${progress}%`;
+            
+            // Save user preference
+            localStorage.setItem('activeWeek', weekNumber);
+            
+            // Scroll to the corresponding week section
+            const weekSection = document.querySelector(`#week-${weekNumber}`);
+            if (weekSection) {
+                weekSection.scrollIntoView({ behavior: 'smooth' });
+            }
         });
     });
 
-    // Restaurar semana ativa salva
+    // Restore active week and progress
     const activeWeek = localStorage.getItem('activeWeek');
     if (activeWeek) {
+        const weekNumber = parseInt(activeWeek);
+        const progress = (weekNumber / totalWeeks) * 100;
+        progressBar.style.width = `${progress}%`;
         document.querySelector(`.milestone[data-week="${activeWeek}"]`)?.classList.add('active');
     }
 }
@@ -55,8 +61,6 @@ function initializeTheme() {
 
 // Inicialização
 document.addEventListener('DOMContentLoaded', () => {
-    setInterval(updateCountdown, 1000);
-    updateCountdown();
     initializeMilestones();
     initializeTheme();
 }); 
