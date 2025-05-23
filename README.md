@@ -1,67 +1,40 @@
-# Plano de Treino - Corrida 21KM
+# Plano de Treino Meia Maratona - 21KM 🏃‍♂️
 
-Um plano de treino interativo e responsivo para preparação de corrida de 21km.
+Um aplicativo web interativo para ajudar corredores a se prepararem para uma corrida de meia maratona 21km. O projeto oferece um plano de treinamento personalizado, acompanhamento de progresso e recursos educacionais para melhorar a performance na corrida.
 
-## Características
+## 🌐 Acesse o Plano de Treino Online
 
-- Design responsivo
-- Tema claro/escuro
-- Contador regressivo para a prova
-- Plano de treino detalhado de 6 semanas
-- Dicas de nutrição e recuperação
-- Estratégia para o dia da prova
-- Galeria de imagens inspiracionais
+[**👉 Clique aqui para acessar o plano de treino completo**](https://21km-running-training-plan.netlify.app/)
 
-## Tecnologias Utilizadas
+Comece sua jornada para os 20KM agora mesmo!
+
+## ✨ Características
+
+- 🎯 Plano de treinamento personalizado para corrida de 21KM
+- 📊 Acompanhamento de progresso e estatísticas
+- 📱 Design responsivo
+- ⏱️ Contador regressivo para a prova
+- 📝 Dicas e informações sobre treinamento
+
+## 🚀 Tecnologias Utilizadas
 
 - HTML5
 - CSS3
 - JavaScript
-- Font Awesome
-- Google Fonts
+- Font Awesome para ícones
+- Google Fonts (Montserrat e Open Sans)
 
-## Estrutura do Projeto
+## 📱 Responsividade
 
-```
-.
-├── index.html          # Arquivo HTML principal
-├── styles.css          # Estilos CSS
-├── script.js           # JavaScript
-└── README.md          # Documentação
-```
+O aplicativo é totalmente responsivo e funciona bem em:
+- Desktops
+- Tablets
+- Smartphones
 
-## Funcionalidades
+## 🎨 Temas
 
-- **Tema Claro/Escuro**: Alternância entre temas com persistência de preferência
-- **Contador Regressivo**: Contagem regressiva para a data da prova
-- **Progresso**: Sistema de marcos semanais com persistência de estado
-- **Treinos**: Detalhamento de cada treino com intensidade, duração e objetivos
-- **Responsividade**: Layout adaptável para diferentes tamanhos de tela
+O aplicativo suporta dois temas:
+- 🌙 Modo Escuro (padrão)
+- ☀️ Modo Claro
 
-## Acessibilidade
-
-- Atributos ARIA para melhor navegação por leitores de tela
-- Contraste adequado entre texto e fundo
-- Descrições alt para imagens
-- Estrutura semântica HTML
-
-## Performance
-
-- CSS e JavaScript em arquivos separados
-- Carregamento lazy de imagens
-- Otimização de recursos
-
-## Como Usar
-
-1. Clone o repositório
-2. Abra o arquivo `index.html` em seu navegador
-3. Navegue pelo plano de treino
-4. Use o botão de tema para alternar entre modo claro e escuro
-
-## Autor
-
-Vagner Sales
-
-## Licença
-
-Este projeto está sob a licença MIT. 
+Desenvolvido com ❤️ para ajudar corredores a alcançarem seus objetivos! 
