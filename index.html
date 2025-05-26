@@ -902,6 +902,101 @@
         body.light-mode .footer-content p {
              color: var(--text-color); /* Títulos e texto do rodapé escuros */
         }
+
+        /* Training Navigation */
+        .training-navigation {
+            background-color: var(--card-bg);
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 30px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            border: 1px solid var(--card-border);
+        }
+
+        .week-selector, .training-selector {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 15px;
+        }
+
+        .training-selector {
+            border-top: 1px solid var(--card-border);
+            padding-top: 15px;
+        }
+
+        .nav-btn {
+            background: linear-gradient(135deg, var(--primary-color), #2980b9);
+            color: white;
+            border: none;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .nav-btn:hover {
+            transform: scale(1.1);
+            box-shadow: 0 0 15px rgba(52, 152, 219, 0.5);
+        }
+
+        .nav-btn:disabled {
+            background: #666;
+            cursor: not-allowed;
+            transform: none;
+            box-shadow: none;
+        }
+
+        #currentWeekTitle {
+            font-size: 1.5rem;
+            color: var(--text-color);
+            margin: 0;
+            text-align: center;
+        }
+
+        #currentTrainingTitle {
+            font-size: 1.2rem;
+            color: var(--text-light);
+            text-align: center;
+        }
+
+        .training-display {
+            position: relative;
+            min-height: 400px;
+        }
+
+        .week-container {
+            transition: opacity 0.3s ease;
+        }
+
+        .week-container.active {
+            opacity: 1;
+        }
+
+        .week-container:not(.active) {
+            opacity: 0;
+            display: none;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            #currentWeekTitle {
+                font-size: 1.2rem;
+            }
+
+            #currentTrainingTitle {
+                font-size: 1rem;
+            }
+
+            .nav-btn {
+                width: 35px;
+                height: 35px;
+            }
+        }
     </style>
 </head>
 <body>
@@ -978,587 +1073,602 @@
             </div>
         </div>
 
-        <div class="week-container" id="week-1">
-            <div class="week-header">
-                <h2>SEMANA 1: CONSTRUÇÃO DE BASE</h2>
-                <div class="week-stats">
-                    <span><i class="fas fa-road"></i> 28km total</span>
-                    <span><i class="fas fa-fire"></i> Intensidade: 6/10</span>
+        <div class="training-navigation">
+            <div class="week-selector">
+                <button class="nav-btn" id="prevWeek" aria-label="Semana anterior">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+                <h2 id="currentWeekTitle">SEMANA 1: CONSTRUÇÃO DE BASE</h2>
+                <button class="nav-btn" id="nextWeek" aria-label="Próxima semana">
+                    <i class="fas fa-chevron-right"></i>
+                </button>
+            </div>
+            <div class="training-selector">
+                <button class="nav-btn" id="prevTraining" aria-label="Treino anterior">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+                <span id="currentTrainingTitle">Treino 1 de 3</span>
+                <button class="nav-btn" id="nextTraining" aria-label="Próximo treino">
+                    <i class="fas fa-chevron-right"></i>
+                </button>
+            </div>
+        </div>
+
+        <div class="training-display">
+            <div class="week-container active" id="week-1">
+                <div class="week-header">
+                    <h2>SEMANA 1: CONSTRUÇÃO DE BASE</h2>
+                    <div class="week-stats">
+                        <span><i class="fas fa-road"></i> 28km total</span>
+                        <span><i class="fas fa-fire"></i> Intensidade: 6/10</span>
+                    </div>
+                </div>
+
+                <div class="training-cards">
+                    <div class="training-card intensity-medium">
+                        <div class="training-day">SEGUNDA</div>
+                        <div class="training-type">
+                            <div class="intensity-indicator"></div>
+                            <span>Intervalado</span>
+                        </div>
+                        <div class="training-details">
+                            <div class="detail-item">
+                                <i class="fas fa-stopwatch"></i>
+                                <span>6x400m (5K pace) + 200m leve</span>
+                            </div>
+                            <div class="detail-item">
+                                <i class="fas fa-road"></i>
+                                <span>8km total</span>
+                            </div>
+                            <div class="detail-item">
+                                <i class="fas fa-heartbeat"></i>
+                                <span>Zona 4-5</span>
+                            </div>
+                        </div>
+                        <div class="training-description">
+                            <p><strong>Objetivo:</strong> Introduzir estímulos de velocidade</p>
+                            <ul>
+                                <li>Aquecimento: 15 min trote leve + alongamentos</li>
+                                <li>Principal: 6x400m em ritmo de 5km (ex: 4:30/km) com 200m trote</li>
+                                <li>Desaquecimento: 10 min trote + alongamentos</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="training-card intensity-low">
+                        <div class="training-day">QUARTA</div>
+                        <div class="training-type">
+                            <div class="intensity-indicator"></div>
+                            <span>Contínuo</span>
+                        </div>
+                        <div class="training-details">
+                            <div class="detail-item">
+                                <i class="fas fa-road"></i>
+                                <span>8km moderado</span>
+                            </div>
+                            <div class="detail-item">
+                                <i class="fas fa-clock"></i>
+                                <span>45-50 minutos</span>
+                            </div>
+                            <div class="detail-item">
+                                <i class="fas fa-heartbeat"></i>
+                                <span>Zona 2-3</span>
+                            </div>
+                        </div>
+                        <div class="training-description">
+                            <p><strong>Objetivo:</strong> Desenvolver resistência aeróbica</p>
+                            <ul>
+                                <li>Corrida contínua em ritmo conversável (5:45-6:15/km)</li>
+                                <li>Foco em postura e respiração</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="training-card intensity-medium">
+                        <div class="training-day">SEXTA</div>
+                        <div class="training-type">
+                            <div class="intensity-indicator"></div>
+                            <span>Longo</span>
+                        </div>
+                        <div class="training-details">
+                            <div class="detail-item">
+                                <i class="fas fa-road"></i>
+                                <span>12km progressivo</span>
+                            </div>
+                            <div class="detail-item">
+                                <i class="fas fa-clock"></i>
+                                <span>65-75 minutos</span>
+                            </div>
+                            <div class="detail-item">
+                                <i class="fas fa-heartbeat"></i>
+                                <span>Zona 2-3 (final Z4)</span>
+                            </div>
+                        </div>
+                        <div class="training-description">
+                            <p><strong>Objetivo:</strong> Construir base aeróbica</p>
+                            <ul>
+                                <li>10km em ritmo confortável (6:00-6:30/km)</li>
+                                <li>Últimos 2km em ritmo de prova (5:15-5:30/km)</li>
+                                <li>Hidratação a cada 20-25 minutos</li>
+                            </ul>
+                        </div>
+                    </div>
                 </div>
             </div>
-
-            <div class="training-cards">
-                <div class="training-card intensity-medium">
-                    <div class="training-day">SEGUNDA</div>
-                    <div class="training-type">
-                        <div class="intensity-indicator"></div>
-                        <span>Intervalado</span>
-                    </div>
-                    <div class="training-details">
-                        <div class="detail-item">
-                            <i class="fas fa-stopwatch"></i>
-                            <span>6x400m (5K pace) + 200m leve</span>
-                        </div>
-                        <div class="detail-item">
-                            <i class="fas fa-road"></i>
-                            <span>8km total</span>
-                        </div>
-                        <div class="detail-item">
-                            <i class="fas fa-heartbeat"></i>
-                            <span>Zona 4-5</span>
-                        </div>
-                    </div>
-                    <div class="training-description">
-                        <p><strong>Objetivo:</strong> Introduzir estímulos de velocidade</p>
-                        <ul>
-                            <li>Aquecimento: 15 min trote leve + alongamentos</li>
-                            <li>Principal: 6x400m em ritmo de 5km (ex: 4:30/km) com 200m trote</li>
-                            <li>Desaquecimento: 10 min trote + alongamentos</li>
-                        </ul>
+            <div class="week-container" id="week-2" style="display: none;">
+                <div class="week-header">
+                    <h2>SEMANA 2: DESENVOLVIMENTO DE RESISTÊNCIA</h2>
+                    <div class="week-stats">
+                        <span><i class="fas fa-road"></i> 32km total</span>
+                        <span><i class="fas fa-fire"></i> Intensidade: 7/10</span>
                     </div>
                 </div>
 
-                <div class="training-card intensity-low">
-                    <div class="training-day">QUARTA</div>
-                    <div class="training-type">
-                        <div class="intensity-indicator"></div>
-                        <span>Contínuo</span>
+                <div class="training-cards">
+                    <div class="training-card intensity-high">
+                        <div class="training-day">TERÇA</div>
+                        <div class="training-type">
+                            <div class="intensity-indicator"></div>
+                            <span>Intervalado</span>
+                        </div>
+                        <div class="training-details">
+                            <div class="detail-item">
+                                <i class="fas fa-stopwatch"></i>
+                                <span>5x800m (10K pace) + 400m leve</span>
+                            </div>
+                            <div class="detail-item">
+                                <i class="fas fa-road"></i>
+                                <span>10km total</span>
+                            </div>
+                        </div>
+                        <div class="training-description">
+                            <p><strong>Objetivo:</strong> Melhorar resistência anaeróbica</p>
+                            <ul>
+                                <li>Aquecimento: 15 min trote + exercícios dinâmicos</li>
+                                <li>Principal: 5x800m em ritmo de 10km (4:45/km) com 400m trote</li>
+                                <li>Desaquecimento: 10 min trote + alongamentos</li>
+                            </ul>
+                        </div>
                     </div>
-                    <div class="training-details">
-                        <div class="detail-item">
-                            <i class="fas fa-road"></i>
-                            <span>8km moderado</span>
+
+                    <div class="training-card intensity-medium">
+                        <div class="training-day">QUINTA</div>
+                        <div class="training-type">
+                            <div class="intensity-indicator"></div>
+                            <span>Fartlek</span>
                         </div>
-                        <div class="detail-item">
-                            <i class="fas fa-clock"></i>
-                            <span>45-50 minutos</span>
+                        <div class="training-details">
+                            <div class="detail-item">
+                                <i class="fas fa-stopwatch"></i>
+                                <span>30min alternando ritmos</span>
+                            </div>
                         </div>
-                        <div class="detail-item">
-                            <i class="fas fa-heartbeat"></i>
-                            <span>Zona 2-3</span>
+                        <div class="training-description">
+                            <p><strong>Objetivo:</strong> Variar estímulos</p>
+                            <ul>
+                                <li>Aquecimento: 10 min trote leve</li>
+                                <li>Principal: 2min forte (5K pace) + 2min moderado, repetir 7x</li>
+                                <li>Desaquecimento: 10 min trote leve</li>
+                            </ul>
                         </div>
                     </div>
-                    <div class="training-description">
-                        <p><strong>Objetivo:</strong> Desenvolver resistência aeróbica</p>
-                        <ul>
-                            <li>Corrida contínua em ritmo conversável (5:45-6:15/km)</li>
-                            <li>Foco em postura e respiração</li>
-                        </ul>
+
+                    <div class="training-card intensity-high">
+                        <div class="training-day">SÁBADO</div>
+                        <div class="training-type">
+                            <div class="intensity-indicator"></div>
+                            <span>Longo</span>
+                        </div>
+                        <div class="training-details">
+                            <div class="detail-item">
+                                <i class="fas fa-road"></i>
+                                <span>14km progressivo</span>
+                            </div>
+                            <div class="detail-item">
+                                <i class="fas fa-clock"></i>
+                                <span>80-90 minutos</span>
+                            </div>
+                        </div>
+                        <div class="training-description">
+                            <p><strong>Objetivo:</strong> Aumentar resistência</p>
+                            <ul>
+                                <li>12km em ritmo confortável (6:00-6:15/km)</li>
+                                <li>Últimos 2km em ritmo de prova (5:15-5:30/km)</li>
+                                <li>Testar hidratação e suplementação</li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
+            </div>
+            <div class="week-container" id="week-3" style="display: none;">
+                <div class="week-header">
+                    <h2>SEMANA 3: INTENSIFICAÇÃO</h2>
+                    <div class="week-stats">
+                        <span><i class="fas fa-road"></i> 36km total</span>
+                        <span><i class="fas fa-fire"></i> Intensidade: 8/10</span>
+                    </div>
+                </div>
+                
+                <div class="training-cards">
+                    <div class="training-card intensity-high">
+                        <div class="training-day">TERÇA</div>
+                        <div class="training-type">
+                            <div class="intensity-indicator"></div>
+                            <span>Ritmo</span>
+                        </div>
+                        <div class="training-details">
+                            <div class="detail-item">
+                                <i class="fas fa-road"></i>
+                                <span>3x2km em ritmo de prova</span>
+                            </div>
+                            <div class="detail-item">
+                                <i class="fas fa-clock"></i>
+                                <span>45-50 minutos</span>
+                            </div>
+                            <div class="detail-item">
+                                <i class="fas fa-heartbeat"></i>
+                                <span>Zona 4</span>
+                            </div>
+                        </div>
+                        <div class="training-description">
+                            <p><strong>Objetivo:</strong> Melhorar ritmo de prova</p>
+                            <ul>
+                                <li>Aquecimento: 15 min trote leve + exercícios dinâmicos</li>
+                                <li>Principal: 3x2km em ritmo alvo (5:15-5:30/km) com 800m trote</li>
+                                <li>Desaquecimento: 10 min trote + alongamentos</li>
+                            </ul>
+                        </div>
+                    </div>
 
-                <div class="training-card intensity-medium">
-                    <div class="training-day">SEXTA</div>
-                    <div class="training-type">
-                        <div class="intensity-indicator"></div>
-                        <span>Longo</span>
+                    <div class="training-card intensity-medium">
+                        <div class="training-day">QUINTA</div>
+                        <div class="training-type">
+                            <div class="intensity-indicator"></div>
+                            <span>Contínuo</span>
+                        </div>
+                        <div class="training-details">
+                            <div class="detail-item">
+                                <i class="fas fa-road"></i>
+                                <span>12km moderado</span>
+                            </div>
+                            <div class="detail-item">
+                                <i class="fas fa-clock"></i>
+                                <span>65-70 minutos</span>
+                            </div>
+                            <div class="detail-item">
+                                <i class="fas fa-heartbeat"></i>
+                                <span>Zona 2-3</span>
+                            </div>
+                        </div>
+                        <div class="training-description">
+                            <p><strong>Objetivo:</strong> Manter ritmo constante</p>
+                            <ul>
+                                <li>Corrida contínua em ritmo conversável (5:45-6:00/km)</li>
+                                <li>Foco em técnica e respiração</li>
+                                <li>Hidratação a cada 25 minutos</li>
+                            </ul>
+                        </div>
                     </div>
-                    <div class="training-details">
-                        <div class="detail-item">
-                            <i class="fas fa-road"></i>
-                            <span>12km progressivo</span>
+
+                    <div class="training-card intensity-high">
+                        <div class="training-day">SÁBADO</div>
+                        <div class="training-type">
+                            <div class="intensity-indicator"></div>
+                            <span>Longo</span>
                         </div>
-                        <div class="detail-item">
-                            <i class="fas fa-clock"></i>
-                            <span>65-75 minutos</span>
+                        <div class="training-details">
+                            <div class="detail-item">
+                                <i class="fas fa-road"></i>
+                                <span>18km progressivo</span>
+                            </div>
+                            <div class="detail-item">
+                                <i class="fas fa-clock"></i>
+                                <span>100-110 minutos</span>
+                            </div>
+                            <div class="detail-item">
+                                <i class="fas fa-heartbeat"></i>
+                                <span>Zona 2-3 (final Z4)</span>
+                            </div>
                         </div>
-                        <div class="detail-item">
-                            <i class="fas fa-heartbeat"></i>
-                            <span>Zona 2-3 (final Z4)</span>
+                        <div class="training-description">
+                            <p><strong>Objetivo:</strong> Preparar para a distância da prova</p>
+                            <ul>
+                                <li>15km em ritmo confortável (5:45-6:00/km)</li>
+                                <li>Últimos 3km em ritmo de prova (5:15-5:30/km)</li>
+                                <li>Testar estratégia de hidratação e suplementação</li>
+                            </ul>
                         </div>
                     </div>
-                    <div class="training-description">
-                        <p><strong>Objetivo:</strong> Construir base aeróbica</p>
-                        <ul>
-                            <li>10km em ritmo confortável (6:00-6:30/km)</li>
-                            <li>Últimos 2km em ritmo de prova (5:15-5:30/km)</li>
-                            <li>Hidratação a cada 20-25 minutos</li>
-                        </ul>
+                </div>
+            </div>
+            <div class="week-container" id="week-4" style="display: none;">
+                <div class="week-header">
+                    <h2>SEMANA 4: PICO DE VOLUME</h2>
+                    <div class="week-stats">
+                        <span><i class="fas fa-road"></i> 40km total</span>
+                        <span><i class="fas fa-fire"></i> Intensidade: 8/10</span>
+                    </div>
+                </div>
+                <div class="training-cards">
+                    <div class="training-card intensity-high">
+                        <div class="training-day">TERÇA</div>
+                        <div class="training-type">
+                            <div class="intensity-indicator"></div>
+                            <span>Intervalado</span>
+                        </div>
+                        <div class="training-details">
+                            <div class="detail-item">
+                                <i class="fas fa-stopwatch"></i>
+                                <span>5x1000m (10K pace) + 400m leve</span>
+                            </div>
+                            <div class="detail-item">
+                                <i class="fas fa-road"></i>
+                                <span>12km total</span>
+                            </div>
+                            <div class="detail-item">
+                                <i class="fas fa-heartbeat"></i>
+                                <span>Zona 4-5</span>
+                            </div>
+                        </div>
+                        <div class="training-description">
+                            <p><strong>Objetivo:</strong> Aumentar velocidade e resistência</p>
+                            <ul>
+                                <li>Aquecimento: 15 min trote + exercícios dinâmicos</li>
+                                <li>Principal: 5x1000m em ritmo de 10km (4:45/km) com 400m trote</li>
+                                <li>Desaquecimento: 10 min trote + alongamentos</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="training-card intensity-medium">
+                        <div class="training-day">QUINTA</div>
+                        <div class="training-type">
+                            <div class="intensity-indicator"></div>
+                            <span>Ritmo</span>
+                        </div>
+                        <div class="training-details">
+                            <div class="detail-item">
+                                <i class="fas fa-road"></i>
+                                <span>8km em ritmo de prova</span>
+                            </div>
+                            <div class="detail-item">
+                                <i class="fas fa-clock"></i>
+                                <span>42-45 minutos</span>
+                            </div>
+                            <div class="detail-item">
+                                <i class="fas fa-heartbeat"></i>
+                                <span>Zona 4</span>
+                            </div>
+                        </div>
+                        <div class="training-description">
+                            <p><strong>Objetivo:</strong> Sustentar ritmo de prova</p>
+                            <ul>
+                                <li>Aquecimento: 15 min trote leve + alongamentos</li>
+                                <li>Principal: 8km em ritmo alvo (5:15-5:30/km)</li>
+                                <li>Desaquecimento: 10 min trote leve</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="training-card intensity-high">
+                        <div class="training-day">SÁBADO</div>
+                        <div class="training-type">
+                            <div class="intensity-indicator"></div>
+                            <span>Longo</span>
+                        </div>
+                        <div class="training-details">
+                            <div class="detail-item">
+                                <i class="fas fa-road"></i>
+                                <span>21km progressivo</span>
+                            </div>
+                            <div class="detail-item">
+                                <i class="fas fa-clock"></i>
+                                <span>120-130 minutos</span>
+                            </div>
+                            <div class="detail-item">
+                                <i class="fas fa-heartbeat"></i>
+                                <span>Zona 2-3 (final Z4)</span>
+                            </div>
+                        </div>
+                        <div class="training-description">
+                            <p><strong>Objetivo:</strong> Simular a distância da prova</p>
+                            <ul>
+                                <li>18km em ritmo confortável (5:45-6:00/km)</li>
+                                <li>Últimos 3km em ritmo de prova (5:15-5:30/km)</li>
+                                <li>Testar estratégia completa de hidratação e suplementação</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="week-container" id="week-5" style="display: none;">
+                <div class="week-header">
+                    <h2>SEMANA 5: REDUÇÃO DE VOLUME</h2>
+                    <div class="week-stats">
+                        <span><i class="fas fa-road"></i> 24km total</span>
+                        <span><i class="fas fa-fire"></i> Intensidade: 6/10</span>
+                    </div>
+                </div>
+                <div class="training-cards">
+                    <div class="training-card intensity-medium">
+                        <div class="training-day">TERÇA</div>
+                        <div class="training-type">
+                            <div class="intensity-indicator"></div>
+                            <span>Intervalado</span>
+                        </div>
+                        <div class="training-details">
+                            <div class="detail-item">
+                                <i class="fas fa-stopwatch"></i>
+                                <span>6x400m (5K pace) + 200m leve</span>
+                            </div>
+                            <div class="detail-item">
+                                <i class="fas fa-road"></i>
+                                <span>8km total</span>
+                            </div>
+                            <div class="detail-item">
+                                <i class="fas fa-heartbeat"></i>
+                                <span>Zona 4</span>
+                            </div>
+                        </div>
+                        <div class="training-description">
+                            <p><strong>Objetivo:</strong> Manter velocidade com volume reduzido</p>
+                            <ul>
+                                <li>Aquecimento: 15 min trote leve + alongamentos</li>
+                                <li>Principal: 6x400m em ritmo de 5km (4:30/km) com 200m trote</li>
+                                <li>Desaquecimento: 10 min trote + alongamentos</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="training-card intensity-low">
+                        <div class="training-day">QUINTA</div>
+                        <div class="training-type">
+                            <div class="intensity-indicator"></div>
+                            <span>Contínuo</span>
+                        </div>
+                        <div class="training-details">
+                            <div class="detail-item">
+                                <i class="fas fa-road"></i>
+                                <span>8km leve</span>
+                            </div>
+                            <div class="detail-item">
+                                <i class="fas fa-clock"></i>
+                                <span>45-50 minutos</span>
+                            </div>
+                            <div class="detail-item">
+                                <i class="fas fa-heartbeat"></i>
+                                <span>Zona 2</span>
+                            </div>
+                        </div>
+                        <div class="training-description">
+                            <p><strong>Objetivo:</strong> Foco na técnica e recuperação ativa</p>
+                            <ul>
+                                <li>Corrida muito leve (6:00-6:30/km)</li>
+                                <li>Foco em técnica e respiração</li>
+                                <li>Alongamentos após a corrida</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="training-card intensity-medium">
+                        <div class="training-day">SÁBADO</div>
+                        <div class="training-type">
+                            <div class="intensity-indicator"></div>
+                            <span>Longo</span>
+                        </div>
+                        <div class="training-details">
+                            <div class="detail-item">
+                                <i class="fas fa-road"></i>
+                                <span>14km progressivo</span>
+                            </div>
+                            <div class="detail-item">
+                                <i class="fas fa-clock"></i>
+                                <span>75-85 minutos</span>
+                            </div>
+                            <div class="detail-item">
+                                <i class="fas fa-heartbeat"></i>
+                                <span>Zona 2-3 (final Z4)</span>
+                            </div>
+                        </div>
+                        <div class="training-description">
+                            <p><strong>Objetivo:</strong> Último treino longo antes da prova</p>
+                            <ul>
+                                <li>12km em ritmo confortável (5:45-6:00/km)</li>
+                                <li>Últimos 2km em ritmo de prova (5:15-5:30/km)</li>
+                                <li>Revisar estratégia de hidratação</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="week-container" id="week-6" style="display: none;">
+                <div class="week-header">
+                    <h2>SEMANA 6: POLIMENTO FINAL</h2>
+                    <div class="week-stats">
+                        <span><i class="fas fa-road"></i> 18km total</span>
+                        <span><i class="fas fa-fire"></i> Intensidade: 4/10</span>
+                    </div>
+                </div>
+                <div class="training-cards">
+                    <div class="training-card intensity-medium">
+                        <div class="training-day">TERÇA</div>
+                        <div class="training-type">
+                            <div class="intensity-indicator"></div>
+                            <span>Ritmo</span>
+                        </div>
+                        <div class="training-details">
+                            <div class="detail-item">
+                                <i class="fas fa-road"></i>
+                                <span>5km em ritmo de prova</span>
+                            </div>
+                            <div class="detail-item">
+                                <i class="fas fa-clock"></i>
+                                <span>25-28 minutos</span>
+                            </div>
+                        </div>
+                        <div class="training-description">
+                            <p><strong>Objetivo:</strong> Manter sensação de ritmo</p>
+                            <ul>
+                                <li>Aquecimento: 15 min trote leve + alongamentos</li>
+                                <li>Principal: 5km em ritmo alvo (5:15-5:30/km)</li>
+                                <li>Desaquecimento: 10 min trote leve</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="training-card intensity-low">
+                        <div class="training-day">QUINTA</div>
+                        <div class="training-type">
+                            <div class="intensity-indicator"></div>
+                            <span>Regenerativo</span>
+                        </div>
+                        <div class="training-details">
+                            <div class="detail-item">
+                                <i class="fas fa-road"></i>
+                                <span>5km leve</span>
+                            </div>
+                            <div class="detail-item">
+                                <i class="fas fa-clock"></i>
+                                <span>30-35 minutos</span>
+                            </div>
+                        </div>
+                        <div class="training-description">
+                            <p><strong>Objetivo:</strong> Recuperação ativa</p>
+                            <ul>
+                                <li>Corrida muito leve (6:30-7:00/km)</li>
+                                <li>Foco em relaxamento e respiração</li>
+                                <li>Alongamentos após a corrida</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="training-card intensity-high">
+                        <div class="training-day">DOMINGO</div>
+                        <div class="training-type">
+                            <div class="intensity-indicator"></div>
+                            <span>PROVA</span>
+                        </div>
+                        <div class="training-details">
+                            <div class="detail-item">
+                                <i class="fas fa-road"></i>
+                                <span>21km estratégicos</span>
+                            </div>
+                        </div>
+                        <div class="training-description">
+                            <p><strong>Estratégia:</strong></p>
+                            <ul>
+                                <li>0-5km: 5-10s/km mais lento que ritmo alvo</li>
+                                <li>5-15km: manter ritmo alvo (5:15-5:30/km)</li>
+                                <li>15-21km: aumentar progressivamente se possível</li>
+                                <li>Hidratar a cada 5km</li>
+                                <li>Boa prova!</li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
 
-        
-        <div class="week-container" id="week-2">
-            <div class="week-header">
-                <h2>SEMANA 2: DESENVOLVIMENTO DE RESISTÊNCIA</h2>
-                <div class="week-stats">
-                    <span><i class="fas fa-road"></i> 32km total</span>
-                    <span><i class="fas fa-fire"></i> Intensidade: 7/10</span>
-                </div>
-            </div>
-
-            <div class="training-cards">
-                <div class="training-card intensity-high">
-                    <div class="training-day">TERÇA</div>
-                    <div class="training-type">
-                        <div class="intensity-indicator"></div>
-                        <span>Intervalado</span>
-                    </div>
-                    <div class="training-details">
-                        <div class="detail-item">
-                            <i class="fas fa-stopwatch"></i>
-                            <span>5x800m (10K pace) + 400m leve</span>
-                        </div>
-                        <div class="detail-item">
-                            <i class="fas fa-road"></i>
-                            <span>10km total</span>
-                        </div>
-                    </div>
-                    <div class="training-description">
-                        <p><strong>Objetivo:</strong> Melhorar resistência anaeróbica</p>
-                        <ul>
-                            <li>Aquecimento: 15 min trote + exercícios dinâmicos</li>
-                            <li>Principal: 5x800m em ritmo de 10km (4:45/km) com 400m trote</li>
-                            <li>Desaquecimento: 10 min trote + alongamentos</li>
-                        </ul>
-                    </div>
-                </div>
-
-                <div class="training-card intensity-medium">
-                    <div class="training-day">QUINTA</div>
-                    <div class="training-type">
-                        <div class="intensity-indicator"></div>
-                        <span>Fartlek</span>
-                    </div>
-                    <div class="training-details">
-                        <div class="detail-item">
-                            <i class="fas fa-stopwatch"></i>
-                            <span>30min alternando ritmos</span>
-                        </div>
-                    </div>
-                    <div class="training-description">
-                        <p><strong>Objetivo:</strong> Variar estímulos</p>
-                        <ul>
-                            <li>Aquecimento: 10 min trote leve</li>
-                            <li>Principal: 2min forte (5K pace) + 2min moderado, repetir 7x</li>
-                            <li>Desaquecimento: 10 min trote leve</li>
-                        </ul>
-                    </div>
-                </div>
-
-                <div class="training-card intensity-high">
-                    <div class="training-day">SÁBADO</div>
-                    <div class="training-type">
-                        <div class="intensity-indicator"></div>
-                        <span>Longo</span>
-                    </div>
-                    <div class="training-details">
-                        <div class="detail-item">
-                            <i class="fas fa-road"></i>
-                            <span>14km progressivo</span>
-                        </div>
-                        <div class="detail-item">
-                            <i class="fas fa-clock"></i>
-                            <span>80-90 minutos</span>
-                        </div>
-                    </div>
-                    <div class="training-description">
-                        <p><strong>Objetivo:</strong> Aumentar resistência</p>
-                        <ul>
-                            <li>12km em ritmo confortável (6:00-6:15/km)</li>
-                            <li>Últimos 2km em ritmo de prova (5:15-5:30/km)</li>
-                            <li>Testar hidratação e suplementação</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        
-        <div class="week-container" id="week-3">
-            <div class="week-header">
-                <h2>SEMANA 3: INTENSIFICAÇÃO</h2>
-                <div class="week-stats">
-                    <span><i class="fas fa-road"></i> 36km total</span>
-                    <span><i class="fas fa-fire"></i> Intensidade: 8/10</span>
-                </div>
-            </div>
-            
-            <div class="training-cards">
-                <div class="training-card intensity-high">
-                    <div class="training-day">TERÇA</div>
-                    <div class="training-type">
-                        <div class="intensity-indicator"></div>
-                        <span>Ritmo</span>
-                    </div>
-                    <div class="training-details">
-                        <div class="detail-item">
-                            <i class="fas fa-road"></i>
-                            <span>3x2km em ritmo de prova</span>
-                        </div>
-                        <div class="detail-item">
-                            <i class="fas fa-clock"></i>
-                            <span>45-50 minutos</span>
-                        </div>
-                        <div class="detail-item">
-                            <i class="fas fa-heartbeat"></i>
-                            <span>Zona 4</span>
-                        </div>
-                    </div>
-                    <div class="training-description">
-                        <p><strong>Objetivo:</strong> Melhorar ritmo de prova</p>
-                        <ul>
-                            <li>Aquecimento: 15 min trote leve + exercícios dinâmicos</li>
-                            <li>Principal: 3x2km em ritmo alvo (5:15-5:30/km) com 800m trote</li>
-                            <li>Desaquecimento: 10 min trote + alongamentos</li>
-                        </ul>
-                    </div>
-                </div>
-
-                <div class="training-card intensity-medium">
-                    <div class="training-day">QUINTA</div>
-                    <div class="training-type">
-                        <div class="intensity-indicator"></div>
-                        <span>Contínuo</span>
-                    </div>
-                    <div class="training-details">
-                        <div class="detail-item">
-                            <i class="fas fa-road"></i>
-                            <span>12km moderado</span>
-                        </div>
-                        <div class="detail-item">
-                            <i class="fas fa-clock"></i>
-                            <span>65-70 minutos</span>
-                        </div>
-                        <div class="detail-item">
-                            <i class="fas fa-heartbeat"></i>
-                            <span>Zona 2-3</span>
-                        </div>
-                    </div>
-                    <div class="training-description">
-                        <p><strong>Objetivo:</strong> Manter ritmo constante</p>
-                        <ul>
-                            <li>Corrida contínua em ritmo conversável (5:45-6:00/km)</li>
-                            <li>Foco em técnica e respiração</li>
-                            <li>Hidratação a cada 25 minutos</li>
-                        </ul>
-                    </div>
-                </div>
-
-                <div class="training-card intensity-high">
-                    <div class="training-day">SÁBADO</div>
-                    <div class="training-type">
-                        <div class="intensity-indicator"></div>
-                        <span>Longo</span>
-                    </div>
-                    <div class="training-details">
-                        <div class="detail-item">
-                            <i class="fas fa-road"></i>
-                            <span>18km progressivo</span>
-                        </div>
-                        <div class="detail-item">
-                            <i class="fas fa-clock"></i>
-                            <span>100-110 minutos</span>
-                        </div>
-                        <div class="detail-item">
-                            <i class="fas fa-heartbeat"></i>
-                            <span>Zona 2-3 (final Z4)</span>
-                        </div>
-                    </div>
-                    <div class="training-description">
-                        <p><strong>Objetivo:</strong> Preparar para a distância da prova</p>
-                        <ul>
-                            <li>15km em ritmo confortável (5:45-6:00/km)</li>
-                            <li>Últimos 3km em ritmo de prova (5:15-5:30/km)</li>
-                            <li>Testar estratégia de hidratação e suplementação</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="week-container" id="week-4">
-            <div class="week-header">
-                <h2>SEMANA 4: PICO DE VOLUME</h2>
-                <div class="week-stats">
-                    <span><i class="fas fa-road"></i> 40km total</span>
-                    <span><i class="fas fa-fire"></i> Intensidade: 8/10</span>
-                </div>
-            </div>
-            <div class="training-cards">
-                <div class="training-card intensity-high">
-                    <div class="training-day">TERÇA</div>
-                    <div class="training-type">
-                        <div class="intensity-indicator"></div>
-                        <span>Intervalado</span>
-                    </div>
-                    <div class="training-details">
-                        <div class="detail-item">
-                            <i class="fas fa-stopwatch"></i>
-                            <span>5x1000m (10K pace) + 400m leve</span>
-                        </div>
-                        <div class="detail-item">
-                            <i class="fas fa-road"></i>
-                            <span>12km total</span>
-                        </div>
-                        <div class="detail-item">
-                            <i class="fas fa-heartbeat"></i>
-                            <span>Zona 4-5</span>
-                        </div>
-                    </div>
-                    <div class="training-description">
-                        <p><strong>Objetivo:</strong> Aumentar velocidade e resistência</p>
-                        <ul>
-                            <li>Aquecimento: 15 min trote + exercícios dinâmicos</li>
-                            <li>Principal: 5x1000m em ritmo de 10km (4:45/km) com 400m trote</li>
-                            <li>Desaquecimento: 10 min trote + alongamentos</li>
-                        </ul>
-                    </div>
-                </div>
-
-                <div class="training-card intensity-medium">
-                    <div class="training-day">QUINTA</div>
-                    <div class="training-type">
-                        <div class="intensity-indicator"></div>
-                        <span>Ritmo</span>
-                    </div>
-                    <div class="training-details">
-                        <div class="detail-item">
-                            <i class="fas fa-road"></i>
-                            <span>8km em ritmo de prova</span>
-                        </div>
-                        <div class="detail-item">
-                            <i class="fas fa-clock"></i>
-                            <span>42-45 minutos</span>
-                        </div>
-                        <div class="detail-item">
-                            <i class="fas fa-heartbeat"></i>
-                            <span>Zona 4</span>
-                        </div>
-                    </div>
-                    <div class="training-description">
-                        <p><strong>Objetivo:</strong> Sustentar ritmo de prova</p>
-                        <ul>
-                            <li>Aquecimento: 15 min trote leve + alongamentos</li>
-                            <li>Principal: 8km em ritmo alvo (5:15-5:30/km)</li>
-                            <li>Desaquecimento: 10 min trote leve</li>
-                        </ul>
-                    </div>
-                </div>
-
-                <div class="training-card intensity-high">
-                    <div class="training-day">SÁBADO</div>
-                    <div class="training-type">
-                        <div class="intensity-indicator"></div>
-                        <span>Longo</span>
-                    </div>
-                    <div class="training-details">
-                        <div class="detail-item">
-                            <i class="fas fa-road"></i>
-                            <span>21km progressivo</span>
-                        </div>
-                        <div class="detail-item">
-                            <i class="fas fa-clock"></i>
-                            <span>120-130 minutos</span>
-                        </div>
-                        <div class="detail-item">
-                            <i class="fas fa-heartbeat"></i>
-                            <span>Zona 2-3 (final Z4)</span>
-                        </div>
-                    </div>
-                    <div class="training-description">
-                        <p><strong>Objetivo:</strong> Simular a distância da prova</p>
-                        <ul>
-                            <li>18km em ritmo confortável (5:45-6:00/km)</li>
-                            <li>Últimos 3km em ritmo de prova (5:15-5:30/km)</li>
-                            <li>Testar estratégia completa de hidratação e suplementação</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="week-container" id="week-5">
-            <div class="week-header">
-                <h2>SEMANA 5: REDUÇÃO DE VOLUME</h2>
-                <div class="week-stats">
-                    <span><i class="fas fa-road"></i> 24km total</span>
-                    <span><i class="fas fa-fire"></i> Intensidade: 6/10</span>
-                </div>
-            </div>
-            <div class="training-cards">
-                <div class="training-card intensity-medium">
-                    <div class="training-day">TERÇA</div>
-                    <div class="training-type">
-                        <div class="intensity-indicator"></div>
-                        <span>Intervalado</span>
-                    </div>
-                    <div class="training-details">
-                        <div class="detail-item">
-                            <i class="fas fa-stopwatch"></i>
-                            <span>6x400m (5K pace) + 200m leve</span>
-                        </div>
-                        <div class="detail-item">
-                            <i class="fas fa-road"></i>
-                            <span>8km total</span>
-                        </div>
-                        <div class="detail-item">
-                            <i class="fas fa-heartbeat"></i>
-                            <span>Zona 4</span>
-                        </div>
-                    </div>
-                    <div class="training-description">
-                        <p><strong>Objetivo:</strong> Manter velocidade com volume reduzido</p>
-                        <ul>
-                            <li>Aquecimento: 15 min trote leve + alongamentos</li>
-                            <li>Principal: 6x400m em ritmo de 5km (4:30/km) com 200m trote</li>
-                            <li>Desaquecimento: 10 min trote + alongamentos</li>
-                        </ul>
-                    </div>
-                </div>
-
-                <div class="training-card intensity-low">
-                    <div class="training-day">QUINTA</div>
-                    <div class="training-type">
-                        <div class="intensity-indicator"></div>
-                        <span>Contínuo</span>
-                    </div>
-                    <div class="training-details">
-                        <div class="detail-item">
-                            <i class="fas fa-road"></i>
-                            <span>8km leve</span>
-                        </div>
-                        <div class="detail-item">
-                            <i class="fas fa-clock"></i>
-                            <span>45-50 minutos</span>
-                        </div>
-                        <div class="detail-item">
-                            <i class="fas fa-heartbeat"></i>
-                            <span>Zona 2</span>
-                        </div>
-                    </div>
-                    <div class="training-description">
-                        <p><strong>Objetivo:</strong> Foco na técnica e recuperação ativa</p>
-                        <ul>
-                            <li>Corrida muito leve (6:00-6:30/km)</li>
-                            <li>Foco em técnica e respiração</li>
-                            <li>Alongamentos após a corrida</li>
-                        </ul>
-                    </div>
-                </div>
-
-                <div class="training-card intensity-medium">
-                    <div class="training-day">SÁBADO</div>
-                    <div class="training-type">
-                        <div class="intensity-indicator"></div>
-                        <span>Longo</span>
-                    </div>
-                    <div class="training-details">
-                        <div class="detail-item">
-                            <i class="fas fa-road"></i>
-                            <span>14km progressivo</span>
-                        </div>
-                        <div class="detail-item">
-                            <i class="fas fa-clock"></i>
-                            <span>75-85 minutos</span>
-                        </div>
-                        <div class="detail-item">
-                            <i class="fas fa-heartbeat"></i>
-                            <span>Zona 2-3 (final Z4)</span>
-                        </div>
-                    </div>
-                    <div class="training-description">
-                        <p><strong>Objetivo:</strong> Último treino longo antes da prova</p>
-                        <ul>
-                            <li>12km em ritmo confortável (5:45-6:00/km)</li>
-                            <li>Últimos 2km em ritmo de prova (5:15-5:30/km)</li>
-                            <li>Revisar estratégia de hidratação</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="week-container" id="week-6">
-            <div class="week-header">
-                <h2>SEMANA 6: POLIMENTO FINAL</h2>
-                <div class="week-stats">
-                    <span><i class="fas fa-road"></i> 18km total</span>
-                    <span><i class="fas fa-fire"></i> Intensidade: 4/10</span>
-                </div>
-            </div>
-            <div class="training-cards">
-                <div class="training-card intensity-medium">
-                    <div class="training-day">TERÇA</div>
-                    <div class="training-type">
-                        <div class="intensity-indicator"></div>
-                        <span>Ritmo</span>
-                    </div>
-                    <div class="training-details">
-                        <div class="detail-item">
-                            <i class="fas fa-road"></i>
-                            <span>5km em ritmo de prova</span>
-                        </div>
-                        <div class="detail-item">
-                            <i class="fas fa-clock"></i>
-                            <span>25-28 minutos</span>
-                        </div>
-                    </div>
-                    <div class="training-description">
-                        <p><strong>Objetivo:</strong> Manter sensação de ritmo</p>
-                        <ul>
-                            <li>Aquecimento: 15 min trote leve + alongamentos</li>
-                            <li>Principal: 5km em ritmo alvo (5:15-5:30/km)</li>
-                            <li>Desaquecimento: 10 min trote leve</li>
-                        </ul>
-                    </div>
-                </div>
-
-                <div class="training-card intensity-low">
-                    <div class="training-day">QUINTA</div>
-                    <div class="training-type">
-                        <div class="intensity-indicator"></div>
-                        <span>Regenerativo</span>
-                    </div>
-                    <div class="training-details">
-                        <div class="detail-item">
-                            <i class="fas fa-road"></i>
-                            <span>5km leve</span>
-                        </div>
-                        <div class="detail-item">
-                            <i class="fas fa-clock"></i>
-                            <span>30-35 minutos</span>
-                        </div>
-                    </div>
-                    <div class="training-description">
-                        <p><strong>Objetivo:</strong> Recuperação ativa</p>
-                        <ul>
-                            <li>Corrida muito leve (6:30-7:00/km)</li>
-                            <li>Foco em relaxamento e respiração</li>
-                            <li>Alongamentos após a corrida</li>
-                        </ul>
-                    </div>
-                </div>
-
-                <div class="training-card intensity-high">
-                    <div class="training-day">DOMINGO</div>
-                    <div class="training-type">
-                        <div class="intensity-indicator"></div>
-                        <span>PROVA</span>
-                    </div>
-                    <div class="training-details">
-                        <div class="detail-item">
-                            <i class="fas fa-road"></i>
-                            <span>21km estratégicos</span>
-                        </div>
-                    </div>
-                    <div class="training-description">
-                        <p><strong>Estratégia:</strong></p>
-                        <ul>
-                            <li>0-5km: 5-10s/km mais lento que ritmo alvo</li>
-                            <li>5-15km: manter ritmo alvo (5:15-5:30/km)</li>
-                            <li>15-21km: aumentar progressivamente se possível</li>
-                            <li>Hidratar a cada 5km</li>
-                            <li>Boa prova!</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        
         <div class="race-strategy">
             <h2><i class="fas fa-flag-checkered"></i> ESTRATÉGIA PARA O DIA DA PROVA</h2>
             <div class="strategy-grid">
