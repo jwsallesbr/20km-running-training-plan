@@ -16,4 +16,4 @@ Comece sua jornada para os 21KM agora mesmo!
 - 📝 Dicas e informações sobre treinamento
 
 
-## Desenvolvido para ajudar corredores a alcançarem seus objetivos! 
+## 🚀 Desenvolvido para ajudar corredores a alcançarem seus objetivos! 
