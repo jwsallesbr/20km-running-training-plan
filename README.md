@@ -4,7 +4,7 @@ Para ajudar corredores a se prepararem para uma corrida de meia maratona 21km. O
 
 ## 🌐 Acesse o Plano de Treino Online
 
-[**👉 Clique aqui para acessar o plano de treino completo**](https://21km-running-training-plan.netlify.app/)
+[**👉 Clique aqui para acessar o plano de treino completo**](https://planodetreinomeiamaratona21km.netlify.app/)
 
 Comece sua jornada para os 21KM agora mesmo!
 
