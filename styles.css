@@ -1,29 +1,36 @@
 :root {
+    /* Brand Colors */
     --primary-color: #3498db;
     --secondary-color: #2ecc71;
     --accent-color: #e74c3c;
+
+    /* Background Colors */
     --dark-color: #121212;
     --darker-color: #0a0a0a;
-    --light-color: #e0e0e0;
-    --text-color: #f5f5f5;
-    --text-light: #b0b0b0;
     --card-bg: #1e1e1e;
     --card-border: #333;
+
+    /* Text Colors */
+    --text-color: #f5f5f5;
+    --text-light: #b0b0b0;
+    --light-color: #e0e0e0;
 }
 
 /* Styles for Light Mode */
 body.light-mode {
+    /* Brand Colors */
     --primary-color: #007bff;
     --secondary-color: #28a745;
     --accent-color: #dc3545;
+
+    /* Background Colors */
     --dark-color: #f8f9fa;
     --darker-color: #e9ecef;
-    --light-color: #343a40;
-    --text-color: #212529;
-    --text-light: #5a6268;
     --card-bg: #ffffff;
     --card-border: #dee2e6;
-}
 
-/* ... existing code ... */
-/* Todo o CSS existente será movido para este arquivo */ 
+    /* Text Colors */
+    --text-color: #212529;
+    --text-light: #5a6268;
+    --light-color: #343a40;
+}

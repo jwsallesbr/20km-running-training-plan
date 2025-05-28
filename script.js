@@ -1,8 +1,3 @@
-// Contador regressivo para a prova
-// ... existing code ...
-// Ativar marcos de progresso
-// function initializeMilestones() { ... }
-
 // Toggle de tema
 function initializeTheme() {
     const themeToggle = document.getElementById('themeToggle');
@@ -175,6 +170,4 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Inicializa o tema
     initializeTheme();
-});
-
-// initializeTheme(); // Already called inside DOMContentLoaded 
+}); 

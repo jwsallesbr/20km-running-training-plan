@@ -1,13 +1,44 @@
+:root {
+    /* Cores */
+    --primary-color: #0066cc;
+    --primary-light: #00ccff;
+    --text-color: #333;
+    --text-light: #555;
+    --background-light: #f9f9f9;
+    --white: #ffffff;
+    
+    /* Sombras */
+    --shadow-sm: 0 3px 6px rgba(0,0,0,0.1);
+    --shadow-md: 0 5px 15px rgba(0,0,0,0.2);
+    
+    /* Transições */
+    --transition-normal: 0.3s ease;
+    
+    /* Espaçamentos */
+    --spacing-sm: 10px;
+    --spacing-md: 20px;
+    --spacing-lg: 30px;
+    
+    /* Border Radius */
+    --radius-sm: 5px;
+    --radius-md: 10px;
+    
+    /* Breakpoints */
+    --breakpoint-sm: 576px;
+    --breakpoint-md: 768px;
+    --breakpoint-lg: 992px;
+}
+
 .hero-banner {
-    background: linear-gradient(135deg, #0066cc, #00ccff);
-    color: white;
+    background: linear-gradient(135deg, var(--primary-color), var(--primary-light));
+    color: var(--white);
     text-align: center;
-    padding: 40px 0;
-    border-radius: 10px;
-    margin-bottom: 30px;
+    padding: var(--spacing-lg) 0;
+    border-radius: var(--radius-md);
+    margin-bottom: var(--spacing-lg);
     position: relative;
     overflow: hidden;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    box-shadow: var(--shadow-md);
 }
 
 .hero-banner::before {
@@ -232,4 +263,89 @@
     background-repeat: no-repeat;
     background-size: contain;
     opacity: 0.2;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .hero-banner h1 {
+        font-size: 2.5em;
+    }
+    
+    .hero-banner p {
+        font-size: 1.1em;
+        padding: 0 var(--spacing-md);
+    }
+    
+    .icon-container {
+        flex-wrap: wrap;
+        gap: var(--spacing-md);
+    }
+    
+    .icon-box {
+        width: calc(50% - var(--spacing-md));
+        margin: 0;
+    }
+}
+
+@media (max-width: 576px) {
+    .hero-banner h1 {
+        font-size: 2em;
+    }
+    
+    .icon-box {
+        width: 100%;
+    }
+    
+    .training-table {
+        font-size: 0.9em;
+    }
+}
+
+/* Modo Escuro */
+@media (prefers-color-scheme: dark) {
+    :root {
+        --text-color: #f0f0f0;
+        --text-light: #b0b0b0;
+        --background-light: #1a1a1a;
+    }
+    
+    .icon-box {
+        background-color: #2a2a2a;
+    }
+    
+    .icon-box h4 {
+        color: var(--primary-light);
+    }
+    
+    .training-table tr:hover {
+        background-color: #2a2a2a;
+    }
+    
+    .motivational-quote {
+        background-color: #2a2a2a;
+        color: var(--text-light);
+    }
+}
+
+/* Acessibilidade */
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation: none !important;
+        transition: none !important;
+    }
+}
+
+/* High Contrast Mode */
+@media (forced-colors: active) {
+    .hero-banner {
+        border: 2px solid CanvasText;
+    }
+    
+    .icon-box {
+        border: 1px solid CanvasText;
+    }
+    
+    .intensity-indicator {
+        border: 1px solid CanvasText;
+    }
 }

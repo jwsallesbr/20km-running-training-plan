@@ -1,20 +1,41 @@
+:root {
+    --primary-color: #0066cc;
+    --secondary-color: #4d94ff;
+    --background-color: #f9f9f9;
+    --text-color: #333;
+    --border-color: #ddd;
+    --shadow: 0 4px 8px rgba(0,0,0,0.1);
+    --low-intensity: #e6ffe6;
+    --medium-intensity: #ffffcc;
+    --high-intensity: #ffe6e6;
+    --transition-speed: 0.3s;
+}
+
+/* Animações Globais */
+* {
+    transition: background-color var(--transition-speed) ease,
+                color var(--transition-speed) ease,
+                transform var(--transition-speed) ease,
+                box-shadow var(--transition-speed) ease;
+}
+
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     line-height: 1.6;
-    color: #333;
+    color: var(--text-color);
     max-width: 1200px;
     margin: 0 auto;
     padding: 20px;
-    background-color: #f9f9f9;
+    background-color: var(--background-color);
 }
 
 h1 {
-    color: #0066cc;
+    color: var(--primary-color);
     text-align: center;
     font-size: 2.5em;
     margin-bottom: 30px;
     text-transform: uppercase;
-    border-bottom: 3px solid #0066cc;
+    border-bottom: 3px solid var(--primary-color);
     padding-bottom: 10px;
 }
 
@@ -52,8 +73,14 @@ h3 {
     padding: 15px;
     background-color: white;
     border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    box-shadow: var(--shadow);
     text-align: center;
+    transform: translateY(0);
+}
+
+.info-box:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(0,0,0,0.15);
 }
 
 .info-box h3 {
@@ -88,8 +115,13 @@ h3 {
     background-color: #f2f2f2;
 }
 
+.overview-table tr {
+    transition: background-color var(--transition-speed) ease;
+}
+
 .overview-table tr:hover {
     background-color: #e6f2ff;
+    transform: scale(1.01);
 }
 
 .week-container {
@@ -97,15 +129,30 @@ h3 {
     background-color: white;
     border-radius: 10px;
     padding: 20px;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    box-shadow: var(--shadow);
+    transform: translateY(0);
+    transition: transform var(--transition-speed) ease,
+                box-shadow var(--transition-speed) ease;
+}
+
+.week-container:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0,0,0,0.15);
 }
 
 .week-header {
-    background-color: #0066cc;
+    background-color: var(--primary-color);
     color: white;
     padding: 10px 20px;
     border-radius: 8px 8px 0 0;
     margin: -20px -20px 20px -20px;
+    transition: background-color var(--transition-speed) ease,
+                transform var(--transition-speed) ease;
+}
+
+.week-header:hover {
+    background-color: var(--secondary-color);
+    transform: translateY(-2px);
 }
 
 .week-header h3 {
@@ -132,8 +179,13 @@ h3 {
     vertical-align: top;
 }
 
+.training-table tr {
+    transition: all var(--transition-speed) ease;
+}
+
 .training-table tr:hover {
     background-color: #f5f5f5;
+    transform: translateX(5px);
 }
 
 .day-column {
@@ -165,7 +217,14 @@ h3 {
     padding: 20px;
     background-color: white;
     border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    box-shadow: var(--shadow);
+    transform: translateY(0);
+    transition: all var(--transition-speed) ease;
+}
+
+.tip-box:hover {
+    transform: translateY(-5px) scale(1.02);
+    box-shadow: 0 8px 16px rgba(0,0,0,0.15);
 }
 
 .tip-box h3 {
@@ -183,6 +242,13 @@ h3 {
 .tip-list li {
     padding: 8px 0;
     border-bottom: 1px solid #eee;
+    transition: transform var(--transition-speed) ease,
+                padding-left var(--transition-speed) ease;
+}
+
+.tip-list li:hover {
+    transform: translateX(10px);
+    padding-left: 10px;
 }
 
 .tip-list li:before {
@@ -195,9 +261,14 @@ h3 {
     text-align: center;
     margin-top: 40px;
     padding-top: 20px;
-    border-top: 1px solid #ddd;
+    border-top: 1px solid var(--border-color);
     color: #666;
     font-size: 0.9em;
+    transition: opacity var(--transition-speed) ease;
+}
+
+.footer:hover {
+    opacity: 0.8;
 }
 
 @media print {
@@ -216,16 +287,25 @@ h3 {
     }
 }
 
+.intensity-low, .intensity-medium, .intensity-high {
+    transition: background-color var(--transition-speed) ease,
+                transform var(--transition-speed) ease;
+}
+
+.intensity-low:hover, .intensity-medium:hover, .intensity-high:hover {
+    transform: scale(1.02);
+}
+
 .intensity-low {
-    background-color: #e6ffe6;
+    background-color: var(--low-intensity);
 }
 
 .intensity-medium {
-    background-color: #ffffcc;
+    background-color: var(--medium-intensity);
 }
 
 .intensity-high {
-    background-color: #ffe6e6;
+    background-color: var(--high-intensity);
 }
 
 .race-day {
@@ -235,10 +315,51 @@ h3 {
 
 .workout-step {
     margin-bottom: 5px;
+    transition: transform var(--transition-speed) ease,
+                padding-left var(--transition-speed) ease;
+}
+
+.workout-step:hover {
+    transform: translateX(5px);
+    padding-left: 5px;
 }
 
 .workout-step:before {
     content: "•";
     color: #0066cc;
     margin-right: 8px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .info-container {
+        flex-direction: column;
+    }
+    
+    .training-table {
+        display: block;
+        overflow-x: auto;
+    }
+    
+    .tip-box {
+        min-width: 100%;
+    }
+    
+    .week-header {
+        padding: 10px;
+    }
+}
+
+@media (max-width: 480px) {
+    body {
+        padding: 10px;
+    }
+    
+    h1 {
+        font-size: 2em;
+    }
+    
+    .info-box {
+        min-width: 100%;
+    }
 }

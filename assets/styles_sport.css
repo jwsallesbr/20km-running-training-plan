@@ -6,6 +6,23 @@
     --light-color: #ecf0f1;
     --text-color: #333;
     --text-light: #7f8c8d;
+
+    /* Sombras */
+    --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.05);
+    --shadow-md: 0 5px 15px rgba(0, 0, 0, 0.05);
+    --shadow-lg: 0 10px 20px rgba(0, 0, 0, 0.1);
+
+    /* Transições */
+    --transition-fast: 0.2s;
+    --transition-normal: 0.3s;
+    --transition-slow: 0.5s;
+
+    /* Breakpoints */
+    --breakpoint-xs: 320px;
+    --breakpoint-sm: 576px;
+    --breakpoint-md: 768px;
+    --breakpoint-lg: 992px;
+    --breakpoint-xl: 1200px;
 }
 
 * {
@@ -105,15 +122,15 @@ h1, h2, h3, h4 {
     background-color: white;
     border-radius: 10px;
     padding: 20px;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    box-shadow: var(--shadow-md);
     display: flex;
     align-items: center;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    transition: transform var(--transition-normal) ease, box-shadow var(--transition-normal) ease;
 }
 
 .stat-card:hover {
     transform: translateY(-5px);
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    box-shadow: var(--shadow-lg);
 }
 
 .stat-icon {
@@ -154,7 +171,7 @@ h1, h2, h3, h4 {
     border-radius: 10px;
     padding: 30px;
     margin-bottom: 40px;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    box-shadow: var(--shadow-md);
 }
 
 .progress-container h2 {
@@ -175,7 +192,7 @@ h1, h2, h3, h4 {
     height: 100%;
     background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
     border-radius: 5px;
-    transition: width 0.5s ease;
+    transition: width var(--transition-slow) ease;
 }
 
 .progress-milestones {
@@ -198,7 +215,7 @@ h1, h2, h3, h4 {
     font-weight: bold;
     color: var(--text-light);
     cursor: pointer;
-    transition: all 0.3s ease;
+    transition: all var(--transition-normal) ease;
 }
 
 .milestone.active {
@@ -226,7 +243,7 @@ h1, h2, h3, h4 {
     background-color: white;
     border-radius: 10px;
     padding: 30px;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    box-shadow: var(--shadow-md);
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -268,7 +285,7 @@ h1, h2, h3, h4 {
     background-color: white;
     border-radius: 10px;
     margin-bottom: 40px;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    box-shadow: var(--shadow-md);
     overflow: hidden;
 }
 
@@ -311,7 +328,7 @@ h1, h2, h3, h4 {
     padding: 20px;
     margin-bottom: 20px;
     border-left: 5px solid var(--primary-color);
-    transition: transform 0.3s ease;
+    transition: transform var(--transition-normal) ease, box-shadow var(--transition-normal) ease;
 }
 
 .training-card:hover {
@@ -420,7 +437,7 @@ h1, h2, h3, h4 {
     border-radius: 10px;
     padding: 30px;
     margin-bottom: 40px;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    box-shadow: var(--shadow-md);
 }
 
 .race-strategy h2 {
@@ -484,7 +501,7 @@ h1, h2, h3, h4 {
     border-radius: 10px;
     padding: 30px;
     margin-bottom: 40px;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    box-shadow: var(--shadow-md);
 }
 
 .tips-container h2 {
@@ -511,7 +528,7 @@ h1, h2, h3, h4 {
     background-color: #f9f9f9;
     border-radius: 8px;
     padding: 20px;
-    transition: transform 0.3s ease;
+    transition: transform var(--transition-normal) ease, box-shadow var(--transition-normal) ease;
 }
 
 .tip-card:hover {
@@ -599,7 +616,7 @@ h1, h2, h3, h4 {
     border-radius: 8px;
     background-size: cover;
     background-position: center;
-    transition: transform 0.3s ease;
+    transition: transform var(--transition-normal) ease, box-shadow var(--transition-normal) ease;
     position: relative;
     overflow: hidden;
 }
@@ -671,59 +688,209 @@ h1, h2, h3, h4 {
     display: flex;
     align-items: center;
     justify-content: center;
-    transition: background-color 0.3s ease;
+    transition: background-color var(--transition-normal) ease;
 }
 
 .footer-social a:hover {
     background-color: var(--primary-color);
 }
 
-/* Responsive */
-@media (max-width: 768px) {
+/* Responsive Design */
+/* Extra Small Devices (phones, 320px and up) */
+@media (max-width: 576px) {
+    .container {
+        padding: 0 10px;
+    }
+
     .header-content h1 {
-        font-size: 2.5rem;
+        font-size: 1.8rem;
     }
-    
-    .motivational-section {
-        grid-template-columns: 1fr;
+
+    .subtitle {
+        font-size: 1rem;
     }
-    
-    .strategy-grid {
-        grid-template-columns: 1fr;
-    }
-    
-    .training-details {
+
+    .countdown {
         flex-wrap: wrap;
-        gap: 10px;
+        gap: 8px;
     }
-    
-    .week-header {
+
+    .countdown-item {
+        min-width: 50px;
+        padding: 8px 12px;
+    }
+
+    .countdown-item span {
+        font-size: 1.2rem;
+    }
+
+    .stats-container {
+        grid-template-columns: 1fr;
+    }
+
+    .stat-card {
+        padding: 15px;
+    }
+
+    .stat-icon {
+        width: 45px;
+        height: 45px;
+        font-size: 1.2rem;
+    }
+
+    .training-details {
         flex-direction: column;
-        align-items: flex-start;
-        gap: 10px;
+        gap: 8px;
     }
-    
+
+    .week-header {
+        padding: 15px;
+    }
+
     .week-stats {
-        width: 100%;
-        justify-content: space-between;
+        flex-direction: column;
+        gap: 8px;
     }
 }
 
-@media (max-width: 480px) {
+/* Small Devices (tablets, 576px and up) */
+@media (min-width: 576px) and (max-width: 768px) {
+    .header-content h1 {
+        font-size: 2.2rem;
+    }
+
+    .stats-container {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .motivational-section {
+        grid-template-columns: 1fr;
+    }
+
+    .strategy-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .tips-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* Medium Devices (tablets, 768px and up) */
+@media (min-width: 768px) and (max-width: 992px) {
+    .header-content h1 {
+        font-size: 2.8rem;
+    }
+
+    .stats-container {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .tips-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* Large Devices (desktops, 992px and up) */
+@media (min-width: 992px) and (max-width: 1200px) {
+    .container {
+        max-width: 960px;
+    }
+}
+
+/* Extra Large Devices (large desktops, 1200px and up) */
+@media (min-width: 1200px) {
+    .container {
+        max-width: 1140px;
+    }
+}
+
+/* Landscape Mode */
+@media (max-height: 500px) and (orientation: landscape) {
+    .sport-header {
+        height: 300px;
+    }
+
     .header-content h1 {
         font-size: 2rem;
     }
-    
+
     .countdown {
-        gap: 10px;
+        margin-top: 15px;
     }
-    
-    .countdown-item {
-        min-width: 60px;
-        padding: 10px 15px;
+}
+
+/* High-DPI Screens */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+    .sport-header {
+        background-image: url('https://images.unsplash.com/photo-1552674605-db6ffd4facb5?ixlib=rb-1.2.1&auto=format&fit=crop&w=2700&q=80');
     }
-    
-    .countdown-item span {
-        font-size: 1.5rem;
+}
+
+/* Print Styles */
+@media print {
+    .sport-header {
+        background: none;
+        height: auto;
+        color: var(--text-color);
     }
+
+    .container {
+        max-width: none;
+        padding: 0;
+    }
+
+    .stat-card,
+    .week-container,
+    .tip-card {
+        box-shadow: none;
+        border: 1px solid var(--border-color);
+    }
+
+    .footer-social {
+        display: none;
+    }
+}
+
+/* Touch Devices */
+@media (hover: none) {
+    .stat-card:hover,
+    .training-card:hover,
+    .tip-card:hover,
+    .gallery-item:hover {
+        transform: none;
+    }
+
+    .footer-social a:hover {
+        background-color: var(--primary-color);
+    }
+}
+
+/* Acessibilidade */
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation: none !important;
+        transition: none !important;
+    }
+}
+
+/* Atualizar transições existentes */
+.stat-card,
+.training-card,
+.tip-card,
+.gallery-item {
+    transition: transform var(--transition-normal) ease,
+                box-shadow var(--transition-normal) ease;
+}
+
+.progress-bar {
+    transition: width var(--transition-slow) ease;
+}
+
+.milestone {
+    transition: all var(--transition-normal) ease;
+}
+
+.footer-social a {
+    transition: background-color var(--transition-normal) ease;
 }
