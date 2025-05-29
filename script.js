@@ -160,6 +160,11 @@ document.addEventListener('DOMContentLoaded', function() {
     statCards.forEach(card => {
         card.addEventListener('click', () => {
             activateLevel(card.dataset.level);
+            // Rola para a seção de navegação do treino
+            const trainingNavigation = document.querySelector('.training-navigation');
+            if (trainingNavigation) {
+                trainingNavigation.scrollIntoView({ behavior: 'smooth' });
+            }
         });
     });
 
