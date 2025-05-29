@@ -86,9 +86,15 @@ body.light-mode .level-btn.active {
 .stat-card.active {
     border-color: var(--primary-color);
     box-shadow: 0 0 15px rgba(52, 152, 219, 0.7);
-    transform: translateY(-5px); /* Mantém o efeito de hover quando ativo */
+    background-color: var(--darker-color); /* Slightly different background */
+}
+
+body.light-mode .stat-card.active {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 15px rgba(0, 123, 255, 0.5);
+    background-color: var(--darker-color); /* Use the light mode darker color */
 }
 
 .stat-icon {
-    /* Existing styles for stat-icon */
+    /* Existing code */
 }

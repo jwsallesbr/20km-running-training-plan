@@ -37,7 +37,6 @@ document.addEventListener('DOMContentLoaded', function() {
     // Elementos de progresso
     const progressBar = document.querySelector('.progress-bar');
     const milestones = document.querySelectorAll('.milestone');
-    const totalMilestones = milestones.length; // Use totalMilestones for clarity
 
     // Estado atual
     let currentWeek = 1;
@@ -46,8 +45,6 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Função para atualizar a visualização
     function updateView() {
-        console.log('updateView called. Current Week:', currentWeek, 'Level:', currentLevel);
-
         // Atualiza a exibição do contêiner da semana
         const weekContainers = document.querySelectorAll('.week-container');
         weekContainers.forEach(container => {
@@ -55,9 +52,8 @@ document.addEventListener('DOMContentLoaded', function() {
             container.classList.remove('active');
         });
 
-        const currentWeekContainer = document.getElementById(`week-${currentWeek}${currentLevel === 'advanced' ? '' : '-' + currentLevel}`);
+        const currentWeekContainer = document.getElementById(`week-${currentWeek}-${currentLevel}`);
         if (!currentWeekContainer) {
-            console.error('Week container not found for week:', currentWeek, 'level:', currentLevel);
             return;
         }
 
@@ -113,7 +109,10 @@ document.addEventListener('DOMContentLoaded', function() {
         statCards.forEach(card => card.classList.remove('active'));
 
         // Adiciona a classe 'active' ao cartão correspondente ao nível selecionado
-        document.querySelector(`.stat-card[data-level="${level}"]`).classList.add('active');
+        const selectedCard = document.querySelector(`.stat-card[data-level="${level}"]`);
+        if (selectedCard) {
+            selectedCard.classList.add('active');
+        }
 
         // Atualiza o estado e a visualização
         currentLevel = level;
@@ -147,7 +146,7 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
     nextTrainingBtn.addEventListener('click', () => {
-        const currentWeekContainer = document.getElementById(`week-${currentWeek}${currentLevel === 'advanced' ? '' : '-' + currentLevel}`);
+        const currentWeekContainer = document.getElementById(`week-${currentWeek}-${currentLevel}`);
         const trainingCards = currentWeekContainer ? currentWeekContainer.querySelectorAll('.training-card') : [];
         const trainingsPerWeek = trainingCards.length;
 
