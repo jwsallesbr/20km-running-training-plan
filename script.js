@@ -172,10 +172,19 @@ document.addEventListener('DOMContentLoaded', function() {
     if (savedTraining) currentTraining = parseInt(savedTraining);
     if (savedLevel) {
         currentLevel = savedLevel;
+    } else {
+        // Define o nível padrão se nada for encontrado no localStorage
+        currentLevel = 'beginner';
+    }
+
+    // Atualiza a exibição visual do cartão de nível ativo
+    statCards.forEach(card => card.classList.remove('active'));
+    const selectedCard = document.querySelector(`.stat-card[data-level="${currentLevel}"]`);
+    if (selectedCard) {
+        selectedCard.classList.add('active');
     }
 
     // Inicializa a visualização com o estado carregado ou padrão
-    // Não chama activateLevel aqui para evitar resetar semana e treino
     updateView();
 
     // Inicializa o tema
