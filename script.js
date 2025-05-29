@@ -174,9 +174,9 @@ document.addEventListener('DOMContentLoaded', function() {
         currentLevel = savedLevel;
     }
 
-    // Inicializa a visualização (usando a função activateLevel para garantir o estado inicial correto)
-    const initialLevel = savedLevel || 'beginner';
-    activateLevel(initialLevel);
+    // Inicializa a visualização com o estado carregado ou padrão
+    // Não chama activateLevel aqui para evitar resetar semana e treino
+    updateView();
 
     // Inicializa o tema
     initializeTheme();
