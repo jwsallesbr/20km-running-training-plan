@@ -34,3 +34,46 @@ body.light-mode {
     --text-light: #5a6268;
     --light-color: #343a40;
 }
+
+/* Level Selector */
+.level-selector {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.level-btn {
+    background-color: var(--card-bg);
+    color: var(--text-color);
+    border: 1px solid var(--card-border);
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-weight: bold;
+}
+
+.level-btn:hover {
+    background-color: var(--primary-color);
+    color: white;
+    transform: translateY(-2px);
+}
+
+.level-btn.active {
+    background-color: var(--primary-color);
+    color: white;
+    box-shadow: 0 0 10px rgba(52, 152, 219, 0.5);
+}
+
+body.light-mode .level-btn {
+    background-color: var(--card-bg);
+    color: var(--text-color);
+    border: 1px solid var(--card-border);
+}
+
+body.light-mode .level-btn:hover,
+body.light-mode .level-btn.active {
+    background-color: var(--primary-color);
+    color: white;
+}

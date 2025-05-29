@@ -1018,33 +1018,33 @@
 
     <main id="main-content" class="container" role="main">
         <div class="stats-container">
-            <div class="stat-card">
+            <div class="stat-card" data-level="beginner">
+                <div class="stat-icon">
+                    <i class="fas fa-running"></i>
+                </div>
+                <div class="stat-content">
+                    <h3>Nível Iniciante</h3>
+                    <p>Para quem está começando</p>
+                </div>
+            </div>
+            
+            <div class="stat-card" data-level="intermediate">
                 <div class="stat-icon">
                     <i class="fas fa-tachometer-alt"></i>
                 </div>
                 <div class="stat-content">
-                    <h3>Nível Avançado</h3>
-                    <p>Para corredores experientes</p>
+                    <h3>Nível Intermediário</h3>
+                    <p>Para corredores em evolução</p>
                 </div>
             </div>
             
-            <div class="stat-card">
+            <div class="stat-card" data-level="advanced">
                 <div class="stat-icon">
                     <i class="fas fa-medal"></i>
                 </div>
                 <div class="stat-content">
-                    <h3>Objetivo: Vencer</h3>
-                    <p>Performance máxima</p>
-                </div>
-            </div>
-            
-            <div class="stat-card">
-                <div class="stat-icon">
-                    <i class="fas fa-calendar-alt"></i>
-                </div>
-                <div class="stat-content">
-                    <h3>3 Treinos/Semana</h3>
-                    <p>Planejamento estratégico</p>
+                    <h3>Nível Avançado</h3>
+                    <p>Para corredores experientes</p>
                 </div>
             </div>
         </div>
@@ -1103,7 +1103,189 @@
         </div>
 
         <div class="training-display">
-            <div class="week-container active" id="week-1">
+            <!-- Nível Iniciante -->
+            <div class="week-container active" id="week-1-beginner">
+                <div class="week-header">
+                    <h2>SEMANA 1: INTRODUÇÃO À CORRIDA</h2>
+                    <div class="week-stats">
+                        <span><i class="fas fa-road"></i> 15km total</span>
+                        <span><i class="fas fa-fire"></i> Intensidade: 3/10</span>
+                    </div>
+                </div>
+
+                <div class="training-cards">
+                    <div class="training-card intensity-low">
+                        <div class="training-day">SEGUNDA</div>
+                        <div class="training-type">
+                            <div class="intensity-indicator"></div>
+                            <span>Alternado</span>
+                        </div>
+                        <div class="training-details">
+                            <div class="detail-item">
+                                <i class="fas fa-stopwatch"></i>
+                                <span>5x (2min corrida + 2min caminhada)</span>
+                            </div>
+                            <div class="detail-item">
+                                <i class="fas fa-road"></i>
+                                <span>3km total</span>
+                            </div>
+                        </div>
+                        <div class="training-description">
+                            <p><strong>Objetivo:</strong> Introdução à corrida</p>
+                            <ul>
+                                <li>Aquecimento: 5 min caminhada + alongamentos</li>
+                                <li>Principal: 5 séries de 2min corrida leve + 2min caminhada</li>
+                                <li>Desaquecimento: 5 min caminhada + alongamentos</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="training-card intensity-low">
+                        <div class="training-day">QUARTA</div>
+                        <div class="training-type">
+                            <div class="intensity-indicator"></div>
+                            <span>Contínuo</span>
+                        </div>
+                        <div class="training-details">
+                            <div class="detail-item">
+                                <i class="fas fa-road"></i>
+                                <span>4km leve</span>
+                            </div>
+                            <div class="detail-item">
+                                <i class="fas fa-clock"></i>
+                                <span>30-35 minutos</span>
+                            </div>
+                        </div>
+                        <div class="training-description">
+                            <p><strong>Objetivo:</strong> Desenvolver resistência básica</p>
+                            <ul>
+                                <li>Corrida contínua em ritmo confortável (7:00-7:30/km)</li>
+                                <li>Foco em postura e respiração</li>
+                                <li>Pausas para caminhada se necessário</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="training-card intensity-low">
+                        <div class="training-day">SÁBADO</div>
+                        <div class="training-type">
+                            <div class="intensity-indicator"></div>
+                            <span>Longo</span>
+                        </div>
+                        <div class="training-details">
+                            <div class="detail-item">
+                                <i class="fas fa-road"></i>
+                                <span>5km progressivo</span>
+                            </div>
+                            <div class="detail-item">
+                                <i class="fas fa-clock"></i>
+                                <span>40-45 minutos</span>
+                            </div>
+                        </div>
+                        <div class="training-description">
+                            <p><strong>Objetivo:</strong> Construir base aeróbica</p>
+                            <ul>
+                                <li>3km em ritmo confortável (7:00-7:30/km)</li>
+                                <li>2km em ritmo um pouco mais forte (6:45-7:00/km)</li>
+                                <li>Hidratação a cada 15 minutos</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Nível Intermediário -->
+            <div class="week-container" id="week-1-intermediate">
+                <div class="week-header">
+                    <h2>SEMANA 1: CONSTRUÇÃO DE BASE</h2>
+                    <div class="week-stats">
+                        <span><i class="fas fa-road"></i> 24km total</span>
+                        <span><i class="fas fa-fire"></i> Intensidade: 5/10</span>
+                    </div>
+                </div>
+
+                <div class="training-cards">
+                    <div class="training-card intensity-medium">
+                        <div class="training-day">SEGUNDA</div>
+                        <div class="training-type">
+                            <div class="intensity-indicator"></div>
+                            <span>Intervalado</span>
+                        </div>
+                        <div class="training-details">
+                            <div class="detail-item">
+                                <i class="fas fa-stopwatch"></i>
+                                <span>4x400m (5K pace) + 200m leve</span>
+                            </div>
+                            <div class="detail-item">
+                                <i class="fas fa-road"></i>
+                                <span>6km total</span>
+                            </div>
+                        </div>
+                        <div class="training-description">
+                            <p><strong>Objetivo:</strong> Introduzir estímulos de velocidade</p>
+                            <ul>
+                                <li>Aquecimento: 15 min trote leve + alongamentos</li>
+                                <li>Principal: 4x400m em ritmo de 5km (5:00/km) com 200m trote</li>
+                                <li>Desaquecimento: 10 min trote + alongamentos</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="training-card intensity-low">
+                        <div class="training-day">QUARTA</div>
+                        <div class="training-type">
+                            <div class="intensity-indicator"></div>
+                            <span>Contínuo</span>
+                        </div>
+                        <div class="training-details">
+                            <div class="detail-item">
+                                <i class="fas fa-road"></i>
+                                <span>8km moderado</span>
+                            </div>
+                            <div class="detail-item">
+                                <i class="fas fa-clock"></i>
+                                <span>45-50 minutos</span>
+                            </div>
+                        </div>
+                        <div class="training-description">
+                            <p><strong>Objetivo:</strong> Desenvolver resistência aeróbica</p>
+                            <ul>
+                                <li>Corrida contínua em ritmo conversável (6:00-6:30/km)</li>
+                                <li>Foco em postura e respiração</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="training-card intensity-medium">
+                        <div class="training-day">SÁBADO</div>
+                        <div class="training-type">
+                            <div class="intensity-indicator"></div>
+                            <span>Longo</span>
+                        </div>
+                        <div class="training-details">
+                            <div class="detail-item">
+                                <i class="fas fa-road"></i>
+                                <span>10km progressivo</span>
+                            </div>
+                            <div class="detail-item">
+                                <i class="fas fa-clock"></i>
+                                <span>60-65 minutos</span>
+                            </div>
+                        </div>
+                        <div class="training-description">
+                            <p><strong>Objetivo:</strong> Construir base aeróbica</p>
+                            <ul>
+                                <li>8km em ritmo confortável (6:00-6:30/km)</li>
+                                <li>Últimos 2km em ritmo um pouco mais forte (5:45-6:00/km)</li>
+                                <li>Hidratação a cada 20 minutos</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Nível Avançado (existente) -->
+            <div class="week-container" id="week-1" style="display: none;">
                 <div class="week-header">
                     <h2>SEMANA 1: CONSTRUÇÃO DE BASE</h2>
                     <div class="week-stats">

@@ -32,6 +32,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const nextTrainingBtn = document.getElementById('nextTraining');
     const currentWeekTitle = document.getElementById('currentWeekTitle');
     const currentTrainingTitle = document.getElementById('currentTrainingTitle');
+    const statCards = document.querySelectorAll('.stat-card');
 
     // Elementos de progresso
     const progressBar = document.querySelector('.progress-bar');
@@ -41,23 +42,23 @@ document.addEventListener('DOMContentLoaded', function() {
     // Estado atual
     let currentWeek = 1;
     let currentTraining = 1;
+    let currentLevel = 'beginner';
 
     // Função para atualizar a visualização
     function updateView() {
-        console.log('updateView called. Current Week:', currentWeek);
+        console.log('updateView called. Current Week:', currentWeek, 'Level:', currentLevel);
 
         // Atualiza a exibição do contêiner da semana
         const weekContainers = document.querySelectorAll('.week-container');
-
         weekContainers.forEach(container => {
             container.style.display = 'none';
             container.classList.remove('active');
         });
 
-        const currentWeekContainer = document.getElementById(`week-${currentWeek}`);
+        const currentWeekContainer = document.getElementById(`week-${currentWeek}${currentLevel === 'advanced' ? '' : '-' + currentLevel}`);
         if (!currentWeekContainer) {
-            console.error('Week container not found for week:', currentWeek);
-            return; // Safeguard
+            console.error('Week container not found for week:', currentWeek, 'level:', currentLevel);
+            return;
         }
 
         currentWeekContainer.style.display = 'block';
@@ -82,57 +83,63 @@ document.addEventListener('DOMContentLoaded', function() {
 
         // Atualiza estado dos botões
         prevWeekBtn.disabled = currentWeek === 1;
-        nextWeekBtn.disabled = currentWeek === totalMilestones; // Use totalMilestones here
+        nextWeekBtn.disabled = currentWeek === 6;
         prevTrainingBtn.disabled = currentTraining === 1;
         nextTrainingBtn.disabled = trainingsPerWeek === 0 || currentTraining === trainingsPerWeek;
 
-        // --- Atualização da barra de progresso e marco ativo ---
-        console.log('Updating progress bar for week:', currentWeek, 'Total milestones:', totalMilestones);
+        // Atualiza a barra de progresso
+        const progress = (currentWeek / 6) * 100;
+        if (progressBar) {
+            progressBar.style.width = `${progress}%`;
+        }
+
+        // Atualiza marcos ativos
+        const milestones = document.querySelectorAll('.milestone');
         milestones.forEach(m => m.classList.remove('active'));
         const currentMilestone = document.querySelector(`.milestone[data-week="${currentWeek}"]`);
-
         if (currentMilestone) {
             currentMilestone.classList.add('active');
-            // Calculate progress based on currentWeek and total milestones
-            // Assuming milestones represent weeks 1 through totalMilestones
-            const progress = (currentWeek / totalMilestones) * 100; // Use totalMilestones here
-            console.log('Calculated progress:', progress);
-            progressBar.style.width = `${progress}%`;
-            console.log('Progress bar width set to:', progressBar.style.width);
-        } else {
-            // Fallback/reset if no milestone is found for currentWeek
-            console.warn('Milestone not found for week:', currentWeek);
-            progressBar.style.width = '0%';
         }
-        // --- Fim da atualização da barra de progresso e marco ativo ---
 
-        // Save current week and training to local storage
+        // Salva o estado atual
         localStorage.setItem('currentWeek', currentWeek);
         localStorage.setItem('currentTraining', currentTraining);
-        console.log('State saved to local storage: week', currentWeek, 'training', currentTraining);
+        localStorage.setItem('currentLevel', currentLevel);
+    }
+
+    // Função para ativar um nível específico
+    function activateLevel(level) {
+        // Remove a classe 'active' de todos os cartões de estatísticas
+        statCards.forEach(card => card.classList.remove('active'));
+
+        // Adiciona a classe 'active' ao cartão correspondente ao nível selecionado
+        document.querySelector(`.stat-card[data-level="${level}"]`).classList.add('active');
+
+        // Atualiza o estado e a visualização
+        currentLevel = level;
+        currentWeek = 1;
+        currentTraining = 1;
+        updateView();
     }
 
     // Event listeners para navegação
     prevWeekBtn.addEventListener('click', () => {
-        console.log('Previous week button clicked');
         if (currentWeek > 1) {
             currentWeek--;
-            currentTraining = 1; // Reset training to 1 when changing week
+            currentTraining = 1;
             updateView();
         }
     });
 
     nextWeekBtn.addEventListener('click', () => {
-         console.log('Next week button clicked');
-        if (currentWeek < totalMilestones) { // Use the pre-calculated totalMilestones
+        if (currentWeek < 6) {
             currentWeek++;
-            currentTraining = 1; // Reset training to 1 when changing week
+            currentTraining = 1;
             updateView();
         }
     });
 
     prevTrainingBtn.addEventListener('click', () => {
-        console.log('Previous training button clicked');
         if (currentTraining > 1) {
             currentTraining--;
             updateView();
@@ -140,8 +147,7 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
     nextTrainingBtn.addEventListener('click', () => {
-        console.log('Next training button clicked');
-        const currentWeekContainer = document.getElementById(`week-${currentWeek}`);
+        const currentWeekContainer = document.getElementById(`week-${currentWeek}${currentLevel === 'advanced' ? '' : '-' + currentLevel}`);
         const trainingCards = currentWeekContainer ? currentWeekContainer.querySelectorAll('.training-card') : [];
         const trainingsPerWeek = trainingCards.length;
 
@@ -151,22 +157,27 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 
-    // Restaura a semana e treino ativos ao carregar a página
+    // Event listeners para seleção de nível (apenas cartões)
+    statCards.forEach(card => {
+        card.addEventListener('click', () => {
+            activateLevel(card.dataset.level);
+        });
+    });
+
+    // Restaura o estado salvo
     const savedWeek = localStorage.getItem('currentWeek');
     const savedTraining = localStorage.getItem('currentTraining');
+    const savedLevel = localStorage.getItem('currentLevel');
 
-    if (savedWeek) {
-        currentWeek = parseInt(savedWeek);
-         console.log('Loaded week from local storage:', currentWeek);
-    }
-    if (savedTraining) {
-        currentTraining = parseInt(savedTraining);
-         console.log('Loaded training from local storage:', currentTraining);
+    if (savedWeek) currentWeek = parseInt(savedWeek);
+    if (savedTraining) currentTraining = parseInt(savedTraining);
+    if (savedLevel) {
+        currentLevel = savedLevel;
     }
 
-    // Inicializa a visualização
-    console.log('Initializing view');
-    updateView();
+    // Inicializa a visualização (usando a função activateLevel para garantir o estado inicial correto)
+    const initialLevel = savedLevel || 'beginner';
+    activateLevel(initialLevel);
 
     // Inicializa o tema
     initializeTheme();
