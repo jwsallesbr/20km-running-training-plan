@@ -7,7 +7,14 @@ function initializeTheme() {
         document.body.classList.add('light-mode');
         const icon = themeToggle.querySelector('i');
         if (icon) {
+             // No modo claro, mostrar ícone da lua
              icon.classList.replace('fa-sun', 'fa-moon');
+        }
+    } else {
+        // No modo escuro (padrão ou salvo como dark), mostrar ícone do sol
+        const icon = themeToggle.querySelector('i');
+         if (icon) {
+             icon.classList.replace('fa-moon', 'fa-sun');
         }
     }
 
@@ -17,6 +24,7 @@ function initializeTheme() {
         const isLightMode = document.body.classList.contains('light-mode');
         
         if (icon) {
+             // Se agora está no modo claro, mostrar ícone da lua; caso contrário, mostrar sol
              icon.classList.replace(isLightMode ? 'fa-sun' : 'fa-moon', isLightMode ? 'fa-moon' : 'fa-sun');
         }
         localStorage.setItem('theme', isLightMode ? 'light' : 'dark');
