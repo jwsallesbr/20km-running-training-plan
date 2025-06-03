@@ -180,14 +180,30 @@ document.addEventListener('DOMContentLoaded', function() {
     const savedWeek = localStorage.getItem('currentWeek');
     const savedTraining = localStorage.getItem('currentTraining');
     const savedLevel = localStorage.getItem('currentLevel');
+    const savedTheme = localStorage.getItem('theme');
 
-    if (savedWeek) currentWeek = parseInt(savedWeek);
-    if (savedTraining) currentTraining = parseInt(savedTraining);
-    if (savedLevel) {
+    if (savedWeek && !isNaN(savedWeek) && parseInt(savedWeek) >= 1 && parseInt(savedWeek) <= 6) currentWeek = parseInt(savedWeek);
+    if (savedTraining && !isNaN(savedTraining) && parseInt(savedTraining) >= 1) currentTraining = parseInt(savedTraining);
+
+    const validLevels = ['beginner', 'intermediate', 'advanced'];
+    if (savedLevel && validLevels.includes(savedLevel)) {
         currentLevel = savedLevel;
     } else {
-        // Define o nível padrão se nada for encontrado no localStorage
+        // Define o nível padrão se nada for encontrado no localStorage ou for inválido
         currentLevel = 'beginner';
+    }
+
+    // Validação do tema salvo
+    const validThemes = ['light', 'dark'];
+    if (savedTheme && validThemes.includes(savedTheme)) {
+        if (savedTheme === 'light') {
+            document.body.classList.add('light-mode');
+        } else {
+            document.body.classList.remove('light-mode');
+        }
+    } else {
+        // Define o tema padrão (escuro) se nada for encontrado ou for inválido
+        document.body.classList.remove('light-mode');
     }
 
     // Atualiza a exibição visual do cartão de nível ativo
